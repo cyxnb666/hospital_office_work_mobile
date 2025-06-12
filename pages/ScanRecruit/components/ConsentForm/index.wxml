@@ -1,0 +1,41 @@
+<view class="ConsentForm">
+    <view class="contentBox">
+        <view class="consentForm-title">知情同意书·同意签字页</view>
+        <view class="consentForm-header">临床研究项目名称：甲减方治疗原发性甲状腺功能减退症的临床疗效评价研究</view>
+        <view class="consentForm-header">承担单位：成都中医药大学附属医院</view>
+        <view class="consentForm-header">课题编号：2023MS589</view>
+        <view class="consentForm-header">同意声明：</view>
+        <view class="text">1.我已经阅读了上述有关本研究的介绍，而且有机会就此项研究与医生讨论并提出问题。我提出的所有问题都得到了满意的答复。</view>
+        <view class="text">2.我知道参加本研究可能产生的风险和受益。我知晓参加研究是自愿的，我确认已有充足时间对此进行考虑，而且明白：</view>
+        <view class="ul">
+            <view class="li">(1) 我可以随时向医生咨询更多的信息。</view>
+            <view class="li">(2) 我可以随时退出本研究，而不会受到歧视或报复，医疗待遇与权益不会受到影响。</view>
+            <view class="li">(3)
+                我同样清楚，如果我中途退出研究，特别是由于药物的原因使我退出研究时，我应将我的病情变化告诉医生，完成相应的体格检查和理化检查，这将对整个研究十分有利。
+            </view>
+            <view class="li">(4)
+                如果因病情变化我需要采取任何其他的药物治疗，我会在事先征求医生的意见，或在事后如实告诉医生。
+            </view>
+            <view class="li">(5) 我同意研究者、申办者代表、伦理委员会和项目管理部门查阅我的研究资料。</view>
+            <view class="li">(6) 我将获得一份经过签名并注明日期的知情同意书副本。</view>
+        </view>
+        <view class="text">最后，我决定同意参加本项研究，并保证尽量遵从医嘱。</view>
+        <view class="autograph">
+            <text>患者签名：</text>
+        </view>
+        <view class="autograph">
+            <text>联系手机：</text>
+        </view>
+        <view class="text">我确认已向患者解释了本试验的详细情况，包括其权利以及可能的受益和风险，并给其一份签署过的知情同意书副本。</view>
+        <view class="autograph">
+            <text>医生签名：</text>
+        </view>
+        <view class="autograph">
+            <text>联系手机：</text>
+        </view>
+    </view>
+    <view class="signBox">
+        <view wx:if="{{!signImage}}" class="sign" bind:tap="onSign">客户签字</view>
+        <image wx:else src="{{signImage}}" class="signImage" bind:tap="onSign"></image>
+    </view>
+</view>

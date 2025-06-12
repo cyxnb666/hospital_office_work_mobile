@@ -1,0 +1,43 @@
+<view class="MyAppointments">
+  <view class="MyAppointmentsItem" wx:for="{{myAppointmentsList}}" wx:key="index">
+    <view class="itemData title-container">
+      <view class="title-text-container">
+        <view class="title">{{item.topicName}}</view>
+      </view>
+      <view class="makeAnAppointmentState">{{item.makeAnAppointmentState}}</view>
+    </view>
+    <view class="itemData">
+      <view class="label">课题编号:</view>
+      <view class="value">{{item.topicId}}</view>
+    </view>
+    <view class="itemData">
+      <view class="label">课题简介:</view>
+      <view class="value introduction">{{item.introduction}}</view>
+    </view>
+    <view class="itemData">
+      <view class="label">课题时段:</view>
+      <view class="value">{{item.topicTimePeriod}}</view>
+    </view>
+    <view class="itemData">
+      <view class="label">序号:</view>
+      <view class="value">{{item.groupNameAndNo}}</view>
+      <view class="tag">第 <text class="current">{{item.serviceCount}}</text> 次/共{{item.testTimes}}次
+      </view>
+    </view>
+    <view class="itemData">
+      <view class="label">预约时间:</view>
+      <view class="value">{{item.timePeriod}}</view>
+    </view>
+    <view class="dividingLine"></view>
+    <view class="button-group">
+      <view class="state">{{item.appointStatus === '1' ? '已预约' : item.appointStatus === '2' ? '已完成' : ''}}</view>
+      <view class="button" wx:if="{{item.appointStatus === '1' && item.serviceStatus === '0'}}" data-appointId="{{item.appointId}}" bind:tap="onCancelReservation">取消预约</view>
+    </view>
+  </view>
+  <view wx:if="{{myAppointmentsList.length}}" class="noOtherYet">暂无其它</view>
+  <view wx:else class="emptyBox">
+    <image src="../../../../images/icon_empty.png" class="empty"></image>
+    <view class="emptyText">暂无预约记录</view>
+  </view>
+  <van-dialog id="van-dialog" />
+</view>

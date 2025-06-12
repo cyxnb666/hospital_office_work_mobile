@@ -1,0 +1,36 @@
+<view class="ScanRecruitView">
+    <view class="content">
+        <view class="header">
+            <view class="logo"></view>
+        </view>
+        <view class="content-box">
+            <view class="viewComponent-Box" wx:if="{{active !== 3}}">
+                <van-steps steps="{{ steps }}" active="{{ active }}" active-color="#357BEC"/>
+                <view class="viewComponent">
+                    <ImproveInfo id="ImproveInfo" bind:onInput="onInput"
+                                 customer="{{submitForm.customer}}" wx:if="{{active === 0}}"/>
+                    <Questionnaire id="Questionnaire" bind:onInput="onInput" surveyQuestion="{{submitForm.surveyQuestion}}"
+                                   wx:if="{{active === 1}}"/>
+                    <SignUp id="SignUp" bind:onInput="onInput" signUp="{{submitForm.signUp}}" wx:if="{{active === 2}}"/>
+                </view>
+            </view>
+            <ConsentForm wx:else id="ConsentForm" bind:onSign="onSign" signImage="{{submitForm.agreement.signImage}}"/>
+        </view>
+    </view>
+    <view class="bottomBox">
+        <view class="TemporarySave" bind:tap="onTemporarySave">
+            <image src="../../images/TemporarySave.png" class="TemporarySaveImage"/>
+            暂存
+        </view>
+        <view class="button-group">
+            <view wx:if="{{active !== 0}}" class="PreviousStep" bind:tap="onPreviousStep">
+                <view class="PreviousStepContent">
+                    {{active === 3 ? '取消' : '上一步'}}
+                </view>
+            </view>
+            <view class="NextStep" bind:tap="onNextStep" wx:if="{{showNext}}">
+                {{active === 2 || active === 3 ? '提交' : '下一步'}}
+            </view>
+        </view>
+    </view>
+</view>

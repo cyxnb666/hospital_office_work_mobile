@@ -1,0 +1,43 @@
+<view class="MeView">
+    <view class="MeView-myInfo">
+        <image class="MeView-myInfo-MeBG" src="../../images/MeBG.png"></image>
+        <view class="MeView-myInfo-box">
+            <view class="MeView-myInfo-box-content">
+                <view wx:if="{{!hasUserInfo}}" class="MeView-myInfo-box-content-input">
+                    <button  class="avatar-wrapper" open-type="chooseAvatar"
+                             bind:chooseavatar="onChooseAvatar">
+                        <image class="avatar" src="{{userInfo.avatar}}"></image>
+                    </button>
+                    <view class="nickname-wrapper" wx:if="{{!userInfo.customerName}}">
+                        <text class="nickname-label">昵称</text>
+                        <input type="nickname" class="nickname-input" placeholder="请输入昵称" bind:change="onInputChange" />
+                    </view>
+                    <view wx:else class="customerName">{{userInfo.customerName}}</view>
+                </view>
+                <view wx:else class="MeView-myInfo-box-content-data">
+                    <van-image
+                            class="MeView-myInfo-box-content-data-avatar"
+                            round
+                            width="148rpx"
+                            height="148rpx"
+                            src="{{userInfo.avatar}}"
+                    />
+                    <view class="MeView-myInfo-box-content-data-nickname">
+                        <view class="nickname">{{userInfo.customerName}}</view>
+                        <view class="phone">手机号: {{userInfo.phone}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="functionRegion">
+            <van-cell title="我的积分" icon="points" value="0 分"/>
+            <van-cell title="我的预约" icon="todo-list-o" is-link  bind:tap="onMyAppointments"/>
+            <van-cell title="退出登录" icon="revoke" is-link bind:tap="onLogout"/>
+        </view>
+    </view>
+    <view class="phoneAndAddress">
+        <view>联系电话: 13412341234</view>
+        <view>地址: ------------------</view>
+    </view>
+    <van-dialog id="van-dialog" />
+</view>

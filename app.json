@@ -1,0 +1,72 @@
+{
+  "pages": [
+    "pages/Login/index",
+    "pages/Home/index",
+    "pages/ScanRecruit/index",
+    "pages/EventBooking/index",
+    "pages/InfoNews/index",
+    "pages/ContactUs/index",
+    "pages/Me/index",
+    "pages/InfoDetails/index",
+    "pages/CustomerSignature/index",
+    "pages/SelectAppointment/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#ffffff"
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-steps": "@vant/weapp/steps/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-calendar": "@vant/weapp/calendar/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-checkbox": "@vant/weapp/checkbox/index"
+  },
+  "tabBar": {
+    "color": "#CCCCCC",
+    "selectedColor": "#357BEC",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/Home/index",
+        "selectedIconPath": "/images/Home_active.png",
+        "iconPath": "/images/Home.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/EventBooking/index",
+        "selectedIconPath": "/images/EventBooking_active.png",
+        "iconPath": "/images/EventBooking.png",
+        "text": "活动预约"
+      },
+      {
+        "pagePath": "pages/InfoNews/index",
+        "selectedIconPath": "/images/InfoNews_active.png",
+        "iconPath": "/images/InfoNews.png",
+        "text": "信息资讯"
+      },
+      {
+        "pagePath": "pages/Me/index",
+        "selectedIconPath": "/images/Me_active.png",
+        "iconPath": "/images/Me.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

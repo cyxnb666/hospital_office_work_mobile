@@ -1,0 +1,15 @@
+<view class="modal-content-area">
+    <view class="modal-content">
+        <view class="toast" wx:if="{{!hasDraw}}">
+            请签写您的名字
+        </view>
+        <canvas canvas-id="signature" class="modal-canvas" disable-scroll="{{true}}" id="writeCanvas" bindtouchstart="scaleStart" bindtouchmove="scaleMove" bindtouchend="scaleEnd"></canvas>
+        <view class="modal-bottom">
+            <view class="clear_signature" bindtap=""></view>
+            <view class="flex_btn">
+                <view class="modal-btn modal-clear" bindtap="clearCanvas">清空</view>
+                <view class="modal-btn modal-confirm" bindtap="save">确定</view>
+            </view>
+        </view>
+    </view>
+</view>

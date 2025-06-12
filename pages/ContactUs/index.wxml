@@ -1,0 +1,6 @@
+<view class="ContactUsView">
+    <view class="imageBox">
+        <image class="image" src="../../images/underDevelopment.png"></image>
+        <view class="title">敬请期待</view>
+    </view>
+</view>

@@ -1,0 +1,207 @@
+page, .HomeView {
+    width: 100%;
+    height: 100%;
+    background: #F8F9FD;
+}
+
+.HomeView-header {
+    width: 100%;
+    height: 480rpx;
+    background: linear-gradient(180deg, #88BDF9 0%, #F8F9FD 100%);
+    padding: 112rpx 32rpx 0 32rpx;
+    box-sizing: border-box;
+    margin-bottom: 64rpx;
+}
+
+.HomeView-header-title {
+    font-weight: 600;
+    font-size: 32rpx;
+    color: #000000;
+    text-align: center;
+    font-style: normal;
+    margin-bottom: 44rpx;
+}
+
+.HomeView-header-image {
+    width: 100%;
+    height: 280rpx;
+}
+
+.HomeView-content {
+    width: 100%;
+    padding: 0 32rpx;
+    box-sizing: border-box;
+}
+
+.headerTitle {
+    height: 30rpx;
+    line-height: 30rpx;
+    padding-left: 18rpx;
+    border-left: 6rpx solid #357BEC;
+    font-weight: 600;
+    font-size: 32rpx;
+    color: #000000;
+    text-align: left;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headerTitle-more {
+    height: 30rpx;
+    line-height: 30rpx;
+    font-weight: 400;
+    font-size: 28rpx;
+    color: #357BEC;
+    text-align: left;
+    font-style: normal;
+}
+
+.serviceList {
+    margin-top: 32rpx;
+    margin-bottom: 56rpx;
+    display: flex;
+}
+
+.scanRecruit {
+    width: calc(50% - 10rpx);
+    height: 152rpx;
+    margin-right: 20rpx;
+    background-image: url('https://uat.zhixunchelian.com/hospital_office_work_web/XCXimages/scanRecruitBG.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30rpx;
+    box-sizing: border-box;
+}
+
+.activityReservation {
+    width: calc(50% - 10rpx);
+    height: 152rpx;
+    background-image: url('https://uat.zhixunchelian.com/hospital_office_work_web/XCXimages/activityReservationBG.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30rpx;
+    box-sizing: border-box;
+}
+
+.iconImage {
+    width: 80rpx;
+    height: 72rpx;
+}
+
+.serviceItem-text-title {
+    font-weight: 600;
+    font-size: 28rpx;
+    color: #232323;
+    text-align: left;
+    font-style: normal;
+}
+
+.serviceItem-text-sub {
+    font-weight: 400;
+    font-size: 24rpx;
+    color: #636363;
+    text-align: left;
+    font-style: normal;
+}
+
+.informationList {
+    width: 100%;
+    margin-top: 32rpx;
+    background: #FFFFFF;
+    border-radius: 18rpx;
+    padding: 32rpx;
+    box-sizing: border-box;
+}
+.dividingLine{
+    width: 100%;
+    border-bottom: 2rpx solid #EEEFF1;
+    margin: 32rpx 0;
+}
+.informationItem {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 160rpx;
+}
+.informationItem-title-boc{
+    width: calc(100% - 180rpx);
+    margin-right: 20rpx;
+    height: 100%;
+    position: relative;
+}
+.informationItem-title{
+    width: 100%;
+    height: 110rpx;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    font-weight: 400;
+    font-size: 28rpx;
+    color: #455067;
+    text-align: left;
+    font-style: normal;
+}
+.informationItem-date{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-weight: 400;
+    font-size: 24rpx;
+    color: #ABB3C1;
+    text-align: left;
+    font-style: normal;
+}
+.informationItem-image {
+    width: 160rpx;
+    height: 160rpx;
+    position: relative;
+    border-radius: 8rpx;
+}
+
+.informationImage {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 8rpx;
+}
+
+.informationItem-tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80rpx;
+    height: 40rpx;
+    background: rgba(255,255,255,0.75);
+    border-radius: 0 8rpx 0 8rpx;
+    font-weight: 400;
+    font-size: 20rpx;
+    color: #455067;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.emptyBox{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.empty{
+    width: 302rpx;
+    height: 228rpx;
+    margin-bottom: 20rpx;
+}
+.emptyText{
+    font-weight: 400;
+    font-size: 28rpx;
+    color: #9CA6B6;
+}

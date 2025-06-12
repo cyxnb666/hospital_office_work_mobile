@@ -1,0 +1,24 @@
+<scroll-view class="InfoNewsView" scroll-y bindscrolltolower="nextPage">
+    <view class="InfoNewsViewContent">
+        <view class="InfoNewsItemBox" wx:for="{{infoList}}" wx:key="index" data-id="{{item.infoId}}"
+              bind:tap="goToInfoDetail">
+            <view class="InfoNewsItem">
+                <view class="infoBox">
+                    <view class="title">{{item.title}}</view>
+                    <view class="date">{{item.createTime}}</view>
+                </view>
+                <view class="imageBox">
+                    <image class="image" src="{{item.coverImg}}"/>
+                    <view class="infoType">{{item.infoType === '1' ? '招募类' : '科普类'}}</view>
+                </view>
+            </view>
+            <view class="dividingLine" wx:if="{{index !== (infoList.length-1)}}"></view>
+        </view>
+        <view wx:if="{{infoList.length}}" class="noOtherYet">暂无其它</view>
+        <view wx:else class="emptyBox">
+            <image src="../../images/icon_empty.png" class="empty"></image>
+            <view class="emptyText">暂无信息资讯</view>
+        </view>
+    </view>
+
+</scroll-view>

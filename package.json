@@ -1,0 +1,23 @@
+{
+  "name": "hospital_office_work_mobile",
+  "version": "1.0.0",
+  "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
+  "main": ".eslintrc.js",
+  "dependencies": {
+    "@vant/weapp": "^1.11.7",
+    "crypto-js": "^4.2.0",
+    "moment": "^2.30.1",
+    "mp-html": "^2.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.webxtx.com/other/hospital_office_work_mobile.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

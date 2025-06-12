@@ -1,0 +1,87 @@
+<view class="MakeAppointment">
+    <view class="MakeAppointmentItem" wx:for="{{makeAppointmentList}}" wx:key="index">
+        <view class="title">{{item.topicName}}</view>
+        <view class="itemData">
+            <view class="label">课题编号:</view>
+            <view class="value">{{item.topicId || '-'}}</view>
+        </view>
+        <view class="itemData">
+            <view class="label">课题简介:</view>
+            <view class="value introduction">{{item.introduction}}</view>
+        </view>
+        <view class="itemData">
+            <view class="label">课题时段:</view>
+            <view class="value">{{item.topicTimePeriod || '-'}}</view>
+        </view>
+        <view class="itemData">
+            <view class="label">序号:</view>
+            <view class="value">{{item.groupNameAndNo}}</view>
+            <view class="tag">第 <text class="current">{{item.serviceCount}}</text> 次/共{{item.testTimes}}次
+            </view>
+        </view>
+<view class="itemData rejectedReason" wx:if="{{item.reviewStatus === '2'}}">
+    <view class="label">未通过原因:</view>
+    <view class="value">{{item.rejectedReason || '-'}}</view>
+</view>
+        <view class="dividingLine"></view>
+        <view class="button-group" wx:if="{{item.reviewStatus === '1' && item.isInGroup}}">
+            <view class="quitGroup" data-id="{{item.topicCustomerId}}" bind:tap="onQuitGroup">
+                <view class="quitGroupContent">
+                    退出课题
+                </view>
+            </view>
+            <view class="onMakeAppointment" bind:tap="onMakeAppointment" data-index="{{index}}">
+                预约
+            </view>
+        </view>
+        <view wx:else class="reviewStatus">
+            <view wx:if="{{item.reviewStatus === '0'}}">待审核</view>
+            <view wx:if="{{item.reviewStatus === '1' && !item.isInGroup}}">审核通过待招募完成</view>
+            <view wx:if="{{item.reviewStatus === '2'}}">未通过审核</view>
+            <view>
+                <view wx:if="{{item.reviewStatus === '2'}}" class="onMakeAppointment" bind:tap="onScanRecruit"
+                      data-index="{{index}}" data-type="{{true}}">
+                    去修改
+                </view>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{makeAppointmentList.length}}" class="noOtherYet">暂无其它</view>
+    <view wx:else class="emptyBox">
+        <image src="../../../../images/icon_empty.png" class="empty"></image>
+        <view class="emptyText">暂无预约，请先扫码招募</view>
+        <view class="emptyBtn-group">
+            <view class="emptyBtn" data-type="{{false}}" bind:tap="onScanRecruit">扫码招募</view>
+        </view>
+    </view>
+    <van-popup show="{{ show }}" position="bottom" custom-style="height: 766rpx" bind:close="onClose">
+        <view class="popupContent">
+            <view class="popupContentTitle">选择时间</view>
+            <view class="dateList">
+                <view class="dateItem {{!item.scheduling?'disable':''}} {{(reservationTime.appointDay === item.date) ?'isActive' :''}}"
+                      wx:for="{{dateList}}"
+                      wx:key="index" data-date="{{item.date}}" bind:tap="setDate">
+                    <view class="week">{{item.week}}</view>
+                    <view class="date">{{item.dateMD}}</view>
+                </view>
+            </view>
+            <view class="dividingLine"></view>
+            <view class="timeSlot">
+                <view class="timeSlotTitle">时间段</view>
+                <view class="timeSlotContent">
+                    <view class="timeSlotItem {{(reservationTime.timePeriod === item.key) ?'isTimeSlotActive' :''}}"
+                          wx:for="{{timeSlotList}}" wx:key="index" data-key="{{item.key}}"
+                          data-scheduling="{{item.scheduling}}" bind:tap="setTimeSlot">
+                        <view class="timeSlotItem-title">{{item.title}}</view>
+                        <view>{{item.value}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="popupBtnBox">
+                <view class="popupBtnCancel" bind:tap="onCancel">取消</view>
+                <view class="popupBtnAppointment" bind:tap="onaAppointment">预约</view>
+            </view>
+        </view>
+    </van-popup>
+    <van-dialog id="van-dialog"/>
+</view>

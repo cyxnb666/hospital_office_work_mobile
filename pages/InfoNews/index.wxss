@@ -1,0 +1,119 @@
+page,.InfoNewsView{
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+}
+.InfoNewsViewContent{
+    padding: 40rpx;
+    box-sizing: border-box;
+    /*overflow-y: auto;*/
+}
+.InfoNewsItem{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 160rpx;
+}
+.InfoNewsItem:last-child{
+    margin-bottom: 0;
+}
+.imageBox{
+    width: 160rpx;
+    height: 160rpx;
+    position: relative;
+    border-radius: 8rpx;
+}
+.image{
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 8rpx;
+}
+.infoType{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80rpx;
+    height: 40rpx;
+    background: rgba(255,255,255,0.75);
+    border-radius: 0 8rpx 0 8rpx;
+    font-weight: 400;
+    font-size: 20rpx;
+    color: #455067;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.infoBox{
+    width: calc(100% - 180rpx);
+    margin-right: 20rpx;
+    height: 100%;
+    position: relative;
+}
+.title{
+    height: 110rpx;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    font-weight: 400;
+    font-size: 28rpx;
+    color: #455067;
+    text-align: left;
+    font-style: normal;
+}
+.date{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-weight: 400;
+    font-size: 24rpx;
+    color: #ABB3C1;
+    text-align: left;
+    font-style: normal;
+}
+.swiper{
+    margin-bottom: 10px;
+}
+.swiper-item{
+    width: 100%;
+    height: 100%;
+}
+.demo-text-1{
+    background-color: #82BCFA;
+}
+.demo-text-2{
+    background-color: aquamarine;
+}
+.demo-text-3{
+    background-color: bisque;
+}
+.dividingLine{
+    width: 100%;
+    border-bottom: 2rpx solid #EEEFF1;
+    margin: 32rpx 0;
+}
+.noOtherYet{
+    width: 100%;
+    text-align: center;
+    color: #999999;
+    font-size: 12px;
+}
+.emptyBox{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 244rpx;
+}
+.empty{
+    width: 302rpx;
+    height: 228rpx;
+    margin-bottom: 44rpx;
+}
+.emptyText{
+    margin-bottom: 44rpx;
+    font-weight: 400;
+    font-size: 28rpx;
+    color: #9CA6B6;
+}

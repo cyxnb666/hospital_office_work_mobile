@@ -1,0 +1,44 @@
+page,.InfoDetailsView{
+    width: 100%;
+    height: 100%;
+}
+.InfoDetailsView{
+    padding: 32rpx;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+.InfoDetailsView-title{
+    width: 100%;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+    word-break: break-all;
+
+}
+.InfoDetailsView-infoType{
+    margin-bottom: 10px;
+}
+.InfoDetailsView-topicName{
+    margin-bottom: 10px;
+    display: flex;
+    font-size: 12px;
+}
+
+.InfoDetailsView-qrCode{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.InfoDetailsView-topicName-label,.InfoDetailsView-qrCode-label {
+    width: 80px;
+}
+
+.InfoDetailsView-content-image{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.InfoDetailsView-content-image:last-child {
+    margin-bottom: 0;
+}

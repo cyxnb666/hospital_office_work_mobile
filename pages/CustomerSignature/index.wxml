@@ -1,0 +1,3 @@
+<view class="CustomerSignature">
+    <Signature bind:saveToImageEvent="saveToImageEvent"/>
+</view>

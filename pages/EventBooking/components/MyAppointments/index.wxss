@@ -1,0 +1,140 @@
+.MyAppointments{
+  width: 100%;
+  height: 100%;
+  padding: 32rpx;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background: #F8F9FD;
+}
+
+.MyAppointmentsItem{
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  box-sizing: border-box;
+  margin-bottom: 32rpx;
+}
+
+.noOtherYet{
+  width: 100%;
+  text-align: center;
+  color: #999999;
+  font-size: 12px;
+}
+
+.itemData{
+  display: flex;
+  align-items: center;
+  margin-bottom: 24rpx;
+  font-weight: 400;
+  font-size: 26rpx;
+  color: #5F646D;
+  text-align: left;
+}
+
+.itemData.title-container {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-text-container {
+  flex: 1;
+  margin-right: 20rpx;
+  overflow: hidden;
+}
+
+.title{
+  font-weight: 600;
+  font-size: 32rpx;
+  color: #3D414A;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.makeAnAppointmentState{
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #357BEC;
+  flex-shrink: 0;
+  min-width: 112rpx;
+  text-align: right;
+}
+
+.label{
+  width: 80px;
+  margin-right: 20px;
+}
+
+.introduction {
+  width: calc(100% - 140rpx);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.tag{
+  margin-left: 10px;
+  background: #EDEDED;
+  border-radius: 25rpx;
+  padding: 4rpx 20rpx;
+  color: #626262;
+  font-size: 24rpx;
+}
+
+.current{
+  color: #357BEC;
+}
+
+.button-group{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.state{
+  color: #3D4961;
+  font-size: 28rpx;
+  font-weight: 400;
+}
+
+.button{
+  width: 172rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  border: 2rpx solid #357BEC;
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #357BEC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dividingLine{
+  width: 100%;
+  border-bottom: 2rpx solid #EEEFF1;
+  margin: 32rpx 0;
+}
+
+.emptyBox{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 244rpx;
+}
+
+.empty{
+  width: 302rpx;
+  height: 228rpx;
+  margin-bottom: 44rpx;
+}
+
+.emptyText{
+  margin-bottom: 44rpx;
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #9CA6B6;
+}

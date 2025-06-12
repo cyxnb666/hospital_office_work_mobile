@@ -1,0 +1,292 @@
+.MakeAppointment {
+    width: 100%;
+    height: 100%;
+    padding: 32rpx;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.MakeAppointmentItem {
+    background-color: #ffffff;
+    padding: 30rpx;
+    box-sizing: border-box;
+    border-radius: 16rpx;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.title {
+    font-weight: 600;
+    font-size: 32rpx;
+    color: #3D414A;
+    text-align: left;
+    font-style: normal;
+    margin-bottom: 24rpx;
+}
+
+.noOtherYet {
+    width: 100%;
+    text-align: center;
+    color: #999999;
+    font-size: 12px;
+}
+
+.itemData {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #5F646D;
+    font-size: 26rpx;
+}
+
+.label {
+    width: 150rpx;
+    margin-right: 20rpx;
+}
+
+.rejectedReason {
+  align-items: flex-start;
+}
+
+.rejectedReason .label {
+  flex: 0 0 150rpx;
+}
+
+.rejectedReason .value {
+  flex: 1;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+.introduction {
+    width: calc(100% - 140rpx);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.tag {
+    margin-left: 10px;
+    background: #EDEDED;
+    border-radius: 25rpx;
+    padding: 4rpx 20rpx;
+    color: #626262;
+    font-size: 24rpx;
+}
+
+.current {
+    color: #357BEC;
+}
+
+.dividingLine {
+    width: 100%;
+    border-bottom: 2rpx solid #EEEFF1;
+    margin: 32rpx 0;
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.quitGroup {
+    width: 172rpx;
+    height: 60rpx;
+    border-radius: 46rpx;
+    border: 2rpx solid rgba(54, 125, 236, 0);
+    background: linear-gradient(270deg, rgba(54, 125, 236, 1), rgba(101, 186, 255, 1));
+    padding: 2rpx;
+    box-sizing: border-box;
+    margin-right: 24rpx;
+}
+
+.quitGroupContent {
+    width: 100%;
+    height: 100%;
+    border-radius: 46rpx;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    font-size: 28rpx;
+    color: #357BEC;
+}
+
+.onMakeAppointment {
+    width: 172rpx;
+    height: 60rpx;
+    background: linear-gradient(90deg, #5FB6FC 0%, #3C7EE9 100%);
+    border-radius: 40rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+.emptyBox {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 244rpx;
+}
+
+.empty {
+    width: 302rpx;
+    height: 228rpx;
+    margin-bottom: 44rpx;
+}
+
+.emptyText {
+    margin-bottom: 44rpx;
+    font-weight: 400;
+    font-size: 28rpx;
+    color: #9CA6B6;
+}
+
+.emptyBtn-group {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.emptyBtn {
+    width: 240rpx;
+    height: 80rpx;
+    background: linear-gradient(90deg, #5FB6FC 0%, #3C7EE9 100%);
+    border-radius: 40rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    font-size: 28rpx;
+}
+
+.popupContent {
+    width: 100%;
+    height: 100%;
+    padding: 32rpx 32rpx 0 32rpx;
+    box-sizing: border-box;
+}
+
+.popupContentTitle {
+    font-weight: 600;
+    font-size: 32rpx;
+    color: rgba(0, 0, 0, 0.85);
+    text-align: center;
+    margin-bottom: 40rpx;
+}
+
+.dateList {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    align-items: center;
+}
+
+.dateItem {
+    margin-right: 40rpx;
+    text-align: center;
+    color: #3D4961;
+}
+.disable{
+    color: rgba(61, 73, 97, 0.6);
+}
+.week {
+    font-weight: 400;
+    font-size: 20rpx;
+    text-align: center;
+    margin-bottom: 20rpx;
+}
+
+.date {
+    font-weight: 600;
+    font-size: 30rpx;
+    text-align: center;
+}
+
+.dateItem:last-child {
+    margin-right: 0;
+}
+
+.isActive {
+    padding: 20rpx 14rpx;
+    box-sizing: border-box;
+    color: #357BEC;
+    background: rgba(53,123,236,0.15);
+    border-radius: 20rpx;
+    border: 2rpx solid rgba(53,123,236,0.45);
+}
+
+.timeSlotTitle{
+    font-weight: 600;
+    font-size: 28rpx;
+    color: #333333;
+    text-align: left;
+    margin-bottom: 32rpx;
+}
+.timeSlotContent{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.timeSlotItem{
+    width: calc(50% - 16rpx);
+    margin-right: 32rpx;
+    text-align: center;
+    background: #F0F0F0;
+    border-radius: 8rpx;
+    font-weight: 400;
+    font-size: 24rpx;
+    color: rgba(0,0,0,0.85);
+    padding: 24rpx 0;
+}
+.timeSlotItem:last-child {
+    margin-right: 0;
+}
+
+.timeSlotItem-title{
+    margin-bottom: 12rpx;
+}
+.isTimeSlotActive{
+    background: rgba(53,123,236,0.15);
+    border-radius: 8rpx;
+    border: 2rpx solid rgba(53,123,236,0.45);
+}
+.popupBtnBox{
+    display: flex;
+    align-items: center;
+    padding: 20rpx 40rpx;
+    box-sizing: border-box;
+    box-shadow: 0 -12rpx 24rpx 0 rgba(232,234,240,0.36);
+    margin-top: 80rpx;
+}
+.popupBtnCancel{
+    width: 316rpx;
+    height: 88rpx;
+    border-radius: 46rpx;
+    border: 2rpx solid #5591FF;
+    font-weight: 400;
+    font-size: 28rpx;
+    color: #5591FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 32rpx;
+}
+.popupBtnAppointment{
+    width: 316rpx;
+    height: 88rpx;
+    background: linear-gradient( 90deg, #5FB6FC 0%, #3C7EE9 100%);
+    border-radius: 46rpx;
+    font-weight: 400;
+    font-size: 28rpx;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.reviewStatus{
+    display: flex;
+    justify-content: space-between;
+}

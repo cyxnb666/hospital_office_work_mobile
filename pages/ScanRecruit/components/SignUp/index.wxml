@@ -1,0 +1,29 @@
+<view class="SignUp">
+    <van-cell-group>
+        <van-cell title-width="150rpx" title="选择课题" is-link border="{{ true }}">
+            <picker class="datePicker" mode="selector" value="{{signUp.topicId}}" range-key="label" range="{{topicList}}"
+                    bindchange="bindTopicChange" disabled="{{disabled}}">
+                <view class="{{signUp.topicId?'selectData':'picker'}}">
+                    <view wx:if="{{signUp.topicId}}">{{signUp.topicName}}</view>
+                    <view wx:else
+                          class="{{!signUp.topicId && showError?'error':''}}">请选择课题
+                    </view>
+                </view>
+            </picker>
+        </van-cell>
+        <van-cell title-width="150rpx" title="课题简介" value="{{signUp.introduction}}"
+                  border="{{ true }}"></van-cell>
+        <van-cell title-width="150rpx" title="课题时间段" is-link border="{{ true }}">
+            <picker class="datePicker" mode="selector" value="{{signUp.serviceTimeStart}}" range-key="label"
+                    range="{{timePeriodList}}"  disabled="{{true}}"
+                    bindchange="bindTimePeriodChange">
+                <view class="{{signUp.serviceTimeStart?'selectData':'picker'}}">
+                    <view wx:if="{{signUp.serviceTimeStart}}">{{signUp.serviceTimeStart}} - {{signUp.serviceTimeEnd}}</view>
+                    <view wx:else
+                          class="{{!signUp.serviceTimeStart && showError?'error':''}}">请选择课题时间段
+                    </view>
+                </view>
+            </picker>
+        </van-cell>
+    </van-cell-group>
+</view>

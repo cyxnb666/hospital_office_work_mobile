@@ -1,0 +1,7 @@
+<view class="LoginView">
+    <view class="loginBox">
+        <view class="titleOne">您好，</view>
+        <view class="titleTwo">欢迎登录高泓工作室小程序！</view>
+        <view class="loginBtn" bind:tap="onLogin">一键登录</view>
+    </view>
+</view>

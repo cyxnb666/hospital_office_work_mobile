@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "Signature": "./components/Signature/index"
+  },
+  "navigationBarTitleText": "签名",
+  "pageOrientation": "landscape"
+}

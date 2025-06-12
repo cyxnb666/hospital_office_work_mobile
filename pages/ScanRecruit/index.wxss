@@ -1,0 +1,108 @@
+page,.ScanRecruitView{
+    width: 100%;
+    height: 100%;
+    background: #F8F9FD;
+}
+.ScanRecruitView{
+}
+.header{
+    width: 100%;
+    height: 568rpx;
+    background: linear-gradient( 180deg, #88BDF9 0%, #F5F5F8 100%);
+    padding: 200rpx 92rpx 0 92rpx;
+    box-sizing: border-box;
+    z-index: 1;
+}
+.logo{
+    width: 566rpx;
+    height: 332rpx;
+    z-index: 1;
+    background-image: url('https://uat.zhixunchelian.com/hospital_office_work_web/XCXimages/ScanRecruitImage.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.content{
+    width: 100%;
+    height: calc(100% - 142rpx);
+    box-sizing: border-box;
+}
+.content-box{
+    width: 100%;
+    height: calc(100% - 308rpx);
+    border-radius: 30rpx;
+    margin-top: -260rpx;
+    padding: 32rpx;
+    box-sizing: border-box;
+    z-index: 999999;
+}
+.viewComponent-Box{
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 16rpx;
+    z-index: 999999;
+    padding: 40rpx;
+    box-sizing: border-box;
+}
+.viewComponent{
+    width: 100%;
+    height: calc(100% - 53px);
+    overflow-y: auto;
+}
+.bottomBox{
+    padding: 32rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFFFFF;
+    box-shadow: 0 -12rpx 24rpx 0 rgba(232,234,240,0.36);
+}
+.TemporarySave{
+    font-weight: 400;
+    font-size: 28rpx;
+    color: #357BEC;
+    text-align: center;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+}
+.TemporarySaveImage{
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 8rpx;
+}
+.button-group{
+    display: flex;
+}
+.PreviousStep{
+    width: 240rpx;
+    height: 80rpx;
+    border-radius: 46rpx;
+    border: 2rpx solid rgba(54, 125, 236, 0);
+    background: linear-gradient(270deg, rgba(54, 125, 236, 1), rgba(101, 186, 255, 1));
+    padding: 2rpx;
+    box-sizing: border-box;
+    margin-right: 24rpx;
+}
+.PreviousStepContent{
+    width: 100%;
+    height: 100%;
+    border-radius: 46rpx;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    font-size: 28rpx;
+    color: #357BEC;
+}
+.NextStep{
+    width: 240rpx;
+    height: 80rpx;
+    background: linear-gradient( 90deg, #5FB6FC 0%, #3C7EE9 100%);
+    border-radius: 40rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+}

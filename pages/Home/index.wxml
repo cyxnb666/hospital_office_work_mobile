@@ -1,0 +1,53 @@
+<view class="HomeView">
+    <view class="HomeView-header">
+        <view class="HomeView-header-title">首页</view>
+        <image class="HomeView-header-image" src="../../images/homeBanner.png"></image>
+    </view>
+    <view class="HomeView-content">
+        <view class="HomeView-myService">
+            <view class="headerTitle">我的服务</view>
+            <view class="serviceList">
+                <view class="scanRecruit" bind:tap="scanRecruit">
+                    <view class="serviceItem-text">
+                        <view class="serviceItem-text-title">扫码招募</view>
+                        <view class="serviceItem-text-sub">填写信息</view>
+                    </view>
+                    <image class="iconImage" src="../../images/scanRecruitIcon.png"></image>
+                </view>
+                <view class="activityReservation" bind:tap="activityReservation">
+                    <view class="serviceItem-text">
+                        <view class="serviceItem-text-title">活动预约</view>
+                        <view class="serviceItem-text-sub">招募后预约</view>
+                    </view>
+                    <image class="iconImage" src="../../images/activityReservationIcon.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="HomeView-informationNews">
+            <view class="headerTitle">
+                信息资讯
+                <view class="headerTitle-more" bind:tap="goToMoreInformation">更多</view>
+            </view>
+            <view class="informationList">
+                <view class="informationItemBox"  wx:for="{{infoList}}" wx:key="index" data-id="{{item.infoId}}" bind:tap="goToInfoDetail">
+                    <view class="informationItem">
+                        <view class="informationItem-title-boc">
+                            <view class="informationItem-title">{{item.title}}</view>
+                            <view class="informationItem-date">{{item.createTime}}</view>
+                        </view>
+                        <view class="informationItem-image">
+                            <image class="informationImage" src="{{item.coverImg}}"></image>
+                            <view class="informationItem-tag">{{item.infoType === '1' ? '招募类' : '科普类'}}</view>
+                        </view>
+                    </view>
+                    <view class="dividingLine" wx:if="{{index !== (infoList.length-1)}}"></view>
+                </view>
+                <view wx:if="{{!infoList.length}}" class="emptyBox">
+                    <image src="../../images/icon_empty.png" class="empty"></image>
+                    <view class="emptyText">暂无信息资讯</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+</view>

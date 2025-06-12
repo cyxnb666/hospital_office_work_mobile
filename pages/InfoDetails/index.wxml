@@ -1,0 +1,16 @@
+<view class="InfoDetailsView">
+    <view class="InfoDetailsView-title">{{infoDetails.title}}</view>
+    <van-tag class="InfoDetailsView-infoType" color="#357BEC" size="large">{{infoDetails.infoType === '1' ? '招募信息' : '科普信息'}}</van-tag>
+    <view class="InfoDetailsView-topicName" wx:if="{{infoDetails.infoType === '1' || infoDetails.topicName}}">
+        <view class="InfoDetailsView-topicName-label">课题名称：</view>
+        <view class="InfoDetailsView-topicName-text">{{infoDetails.topicName}}</view>
+    </view>
+    <view class="InfoDetailsView-qrCode" wx:if="{{infoDetails.infoType === '1' || infoDetails.topicQrcode}}">
+        <view class="InfoDetailsView-qrCode-label">
+            <view>课题二维码：</view>
+            <view>(扫码招募)</view>
+        </view>
+        <van-image width="50" height="50" show-loading show-menu-by-longpress src="{{infoDetails.topicQrcode}}" />
+    </view>
+    <mp-html style="word-wrap: break-word;word-break: break-all;" content="{{infoDetails.content}}"></mp-html>
+</view>

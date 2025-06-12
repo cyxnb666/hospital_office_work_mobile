@@ -1,0 +1,25 @@
+page, .EventBookingView {
+    width: 100%;
+    height: 100%;
+    background-color: #F8F9FD;
+}
+
+.tabView {
+    width: 100%;
+    height: calc(100% - 44px);
+}
+
+.vanTabs > .van-ellipsis{
+    color: #333333;
+    font-weight: 600;
+    font-size: 34rpx;
+    text-align: center;
+    font-style: normal;
+}
+.vanTabs > .van-tab--active{
+    color: #357BEC;
+    font-weight: 600;
+    font-size: 34rpx;
+    text-align: center;
+    font-style: normal;
+}

@@ -1,0 +1,19 @@
+<view class="SelectAppointment">
+    <van-tabs wrap-class="vanTabs" active="{{ active }}" color="#82BCFA" border type="card" bind:change="onChange">
+        <van-tab
+                title-style="white-space: normal; word-break: break-all; line-height:30rpx; width:90px;height:40px;display:flex;align-items: center;"
+                wx:for="{{dateList}}" wx:key="index" name="{{item.date}}" title="{{item.date}}{{item.week}}" disabled="{{item.disabled}}"></van-tab>
+    </van-tabs>
+    <view class="timeSlot">
+        <view class="timeSlotItem" wx:for="{{timeList}}" wx:key="index">
+            <view class="time">{{item.time}}</view>
+            <view class="time">余号:
+                <text style="color:#82BCFA">{{item.remaining}}</text>
+            </view>
+            <van-button custom-class="button" color="#82BCFA" round size="small" bind:click="onMakeAppointment">
+                预约
+            </van-button>
+        </view>
+        <van-empty wx:if="{{timeList.length === 0}}" description="暂无数据" />
+    </view>
+</view>

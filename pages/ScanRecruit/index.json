@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "ImproveInfo": "./components/ImproveInfo/index",
+    "Questionnaire": "./components/Questionnaire/index",
+    "SignUp": "./components/SignUp/index",
+    "ConsentForm": "./components/ConsentForm/index"
+  },
+  "navigationBarTitleText": "扫码招募",
+  "navigationStyle": "custom"
+}

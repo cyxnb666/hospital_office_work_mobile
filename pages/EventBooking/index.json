@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "MakeAppointment": "./components/MakeAppointment/index",
+    "MyAppointments": "./components/MyAppointments/index"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "活动预约"
+}
