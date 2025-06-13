@@ -46,6 +46,11 @@ Page({
             url: '/pages/EventBooking/index'
         })
     },
+    questionnaire() {
+        wx.navigateTo({
+            url: '/pages/Questionnaire/index'
+        })
+    },
     goToMoreInformation() {
         wx.switchTab({
             url: '/pages/InfoNews/index'

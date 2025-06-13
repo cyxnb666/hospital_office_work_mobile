@@ -1,0 +1,22 @@
+<view class="QuestionnaireView">
+    <view class="header">
+        <view class="title">调查问卷</view>
+        <view class="subtitle">请认真填写以下问卷内容</view>
+    </view>
+
+    <view class="content">
+        <Questionnaire id="Questionnaire" 
+                      bind:onInput="onInput" 
+                      surveyQuestion="{{surveyQuestion}}" 
+                      wx:if="{{surveyQuestion.length > 0}}"/>
+                      
+        <view wx:else class="emptyBox">
+            <image src="../../images/icon_empty.png" class="empty"></image>
+            <view class="emptyText">暂无调查问卷</view>
+        </view>
+    </view>
+    
+    <view class="bottomBox" wx:if="{{surveyQuestion.length > 0}}">
+        <view class="submitBtn" bind:tap="onSubmit">提交问卷</view>
+    </view>
+</view>

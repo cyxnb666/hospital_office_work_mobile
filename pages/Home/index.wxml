@@ -21,6 +21,13 @@
                     </view>
                     <image class="iconImage" src="../../images/activityReservationIcon.png"></image>
                 </view>
+                <view class="questionnaire" bind:tap="questionnaire">
+                    <view class="serviceItem-text">
+                        <view class="serviceItem-text-title">调查问卷</view>
+                        <view class="serviceItem-text-sub">问卷调查</view>
+                    </view>
+                    <image class="iconImage" src="../../images/questionnaire.png"></image>
+                </view>
             </view>
         </view>
         <view class="HomeView-informationNews">

@@ -23,7 +23,6 @@
     margin-top: 8rpx;
 }
 
-/* 性别选择区域样式优化 */
 .gender-radio-container {
     display: flex;
     flex-direction: column;

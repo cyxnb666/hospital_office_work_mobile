@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "Questionnaire": "./components/Questionnaire/index"
+  },
+  "navigationBarTitleText": "调查问卷"
+}

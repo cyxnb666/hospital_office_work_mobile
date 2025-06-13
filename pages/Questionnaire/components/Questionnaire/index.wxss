@@ -1,0 +1,68 @@
+.Questionnaire {
+    width: 100%;
+    height: 100%;
+}
+
+.questionnaire-scroll {
+    width: 100%;
+    height: 100%;
+    padding: 20rpx;
+    box-sizing: border-box;
+}
+
+.questionnaireItem {
+    margin-bottom: 40rpx;
+}
+
+.questionnaireItem-surveyName {
+    font-weight: bold;
+    font-size: 32rpx;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 30rpx;
+    padding: 20rpx;
+    background: #F5F7FA;
+    border-radius: 12rpx;
+}
+
+.questionnaireItem-title {
+    font-size: 28rpx;
+    color: #333333;
+    line-height: 1.5;
+    margin-bottom: 20rpx;
+    font-weight: 500;
+}
+
+.questionnaireItem-option {
+    padding: 0 20rpx 20rpx 20rpx;
+    box-sizing: border-box;
+}
+
+.checkbox {
+    margin-bottom: 20rpx !important;
+}
+
+.weui-input {
+    width: 100%;
+    min-height: 120rpx;
+    border: 2rpx solid #e5e5e5;
+    border-radius: 8rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+    margin-bottom: 20rpx;
+    font-size: 28rpx;
+    line-height: 1.4;
+}
+
+.weui-input:focus {
+    border-color: #357BEC;
+}
+
+.childrenBox {
+    padding: 20rpx;
+    margin-left: 20rpx;
+    border-left: 4rpx solid #357BEC;
+    background: #F8F9FD;
+    border-radius: 0 8rpx 8rpx 0;
+    margin-top: 20rpx;
+}

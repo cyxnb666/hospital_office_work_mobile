@@ -1,0 +1,92 @@
+<view class="Questionnaire">
+  <scroll-view 
+        scroll-y
+        enhanced
+        bounces="{{false}}"
+        show-scrollbar="{{false}}"
+        fast-deceleration
+        class="questionnaire-scroll"
+    >
+    <view class="questionnaireItem" wx:for="{{surveyQuestion}}" wx:key="index">
+        <view class="questionnaireItem-surveyName">{{item.surveyName}}</view>
+        
+        <!-- 只循环没有父问题的顶级问题 -->
+        <view wx:for="{{item.surveyQuestions}}" wx:for-item="question" 
+              wx:for-index="questionIndex" wx:key="questionIndex"
+              wx:if="{{!question.questionParentId}}">
+            
+            <!-- 主问题标题 -->
+            <view class="questionnaireItem-title">
+                {{questionIndex + 1}}. {{question.questionContent}}
+            </view>
+
+            <!-- 主问题选项 -->
+            <view class="questionnaireItem-option">
+                <van-checkbox wx:if="{{question.questionType === 'RADIO' || question.questionType === 'CHECKBOX'}}"
+                            custom-class="checkbox" 
+                            wx:for="{{question.options}}" 
+                            wx:key="checkIndex" 
+                            wx:for-item="check"
+                            wx:for-index="checkIndex" 
+                            data-index="{{index}}" 
+                            data-valueIndex="{{questionIndex}}"
+                            data-checkIndex="{{checkIndex}}" 
+                            data-questionType="{{question.questionType}}"
+                            shape="{{question.questionType === 'RADIO'?'round':'square'}}" 
+                            checked-color="#357BEC"
+                            value="{{ check.checked }}" 
+                            bind:change="onChange">
+                    {{check.optionContent}}
+                </van-checkbox>
+                <textarea wx:if="{{question.questionType === 'INPUT'}}" 
+                         value="{{question.inputValue}}" 
+                         data-index="{{index}}" 
+                         data-valueIndex="{{questionIndex}}" 
+                         class="weui-input" 
+                         bindinput="onInput"/>
+            </view>
+
+            <!-- 子问题部分 -->
+            <view class="childrenBox" wx:if="{{question.children && question.children.length}}">
+                <view wx:for="{{question.children}}" 
+                      wx:for-item="childQuestion"
+                      wx:for-index="childIndex"
+                      wx:key="childIndex">
+                    <!-- 子问题标题 -->
+                    <view class="questionnaireItem-title">
+                        {{questionIndex + 1}}.{{childIndex + 1}}. {{childQuestion.questionContent}}
+                    </view>
+                    
+                    <!-- 子问题选项 -->
+                    <view class="questionnaireItem-option">
+                        <van-checkbox wx:if="{{childQuestion.questionType === 'RADIO' || childQuestion.questionType === 'CHECKBOX'}}"
+                                    custom-class="checkbox" 
+                                    wx:for="{{childQuestion.options}}" 
+                                    wx:key="checkIndex"
+                                    wx:for-item="check"
+                                    wx:for-index="checkIndex" 
+                                    data-index="{{index}}" 
+                                    data-valueIndex="{{questionIndex}}"
+                                    data-childrenIndex="{{childIndex}}" 
+                                    data-checkIndex="{{checkIndex}}"
+                                    data-questionType="{{childQuestion.questionType}}"
+                                    shape="{{childQuestion.questionType === 'RADIO'?'round':'square'}}"
+                                    checked-color="#357BEC"
+                                    value="{{ check.checked }}" 
+                                    bind:change="onChange">
+                            {{check.optionContent}}
+                        </van-checkbox>
+                        <textarea wx:if="{{childQuestion.questionType === 'INPUT'}}" 
+                                 value="{{childQuestion.inputValue}}" 
+                                 data-index="{{index}}" 
+                                 data-valueIndex="{{questionIndex}}" 
+                                 data-childrenIndex="{{childIndex}}" 
+                                 class="weui-input" 
+                                 bindinput="onInput"/>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+  </scroll-view>
+</view>

@@ -102,3 +102,9 @@ export const terminateService = (topicCustomerId) => instance.post(`/customer/te
  * @returns Promise
  */
 export const getInfoDetail = (infoId) => instance.post(`/info/getInfoDetail/${infoId}`)
+/**
+ * @description -提交调查问卷
+ * @param {Object} date
+ * @returns Promise
+ */
+export const fillQuestionnaire = (date) => instance.post('/customer/fillQuestionnaire', date)

@@ -130,7 +130,6 @@ Page({
                 }
             })
         }).catch(() => {
-            // 如果获取失败，确保topicId仍然被设置
             if (topicId) {
                 this.setData({
                     'submitForm.signUp.topicId': topicId
@@ -138,7 +137,6 @@ Page({
             }
         })
     },
-    // 保留调查问卷方法（之后可能会用到）
     clientSurveyQuestionFn() {
         clientSurveyQuestion().then(res => {
             this.setData({
@@ -164,9 +162,13 @@ Page({
                 showNext: true,
                 'submitForm.signUp.topicId': topicId
             })
-            // 确保topicId被保存到localStorage
             wx.setStorageSync('topicId', topicId)
         }
         this.getCustomerByOpenIdFn(topicId);
+    },
+    goToHome() {
+        wx.switchTab({
+            url: '/pages/Home/index'
+        })
     }
 })

@@ -29,7 +29,7 @@ page, .HomeView {
 
 .HomeView-content {
     width: 100%;
-    padding: 0 32rpx;
+    padding: 0 32rpx 32rpx 32rpx;
     box-sizing: border-box;
 }
 
@@ -60,14 +60,16 @@ page, .HomeView {
 
 .serviceList {
     margin-top: 32rpx;
-    margin-bottom: 56rpx;
+    margin-bottom: 32rpx;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .scanRecruit {
     width: calc(50% - 10rpx);
     height: 152rpx;
-    margin-right: 20rpx;
+    margin-bottom: 20rpx;
     background-image: url('https://uat.zhixunchelian.com/hospital_office_work_web/XCXimages/scanRecruitBG.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -81,6 +83,7 @@ page, .HomeView {
 .activityReservation {
     width: calc(50% - 10rpx);
     height: 152rpx;
+    margin-bottom: 20rpx;
     background-image: url('https://uat.zhixunchelian.com/hospital_office_work_web/XCXimages/activityReservationBG.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -89,6 +92,20 @@ page, .HomeView {
     justify-content: space-between;
     padding: 30rpx;
     box-sizing: border-box;
+}
+
+.questionnaire {
+    width: calc(50% - 10rpx);
+    height: 152rpx;
+    margin-bottom: 20rpx;
+    background: linear-gradient(135deg, #FFE8CC 0%, #FFD6A3 100%);
+    border-radius: 16rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30rpx;
+    box-sizing: border-box;
+    box-shadow: 0 4rpx 12rpx rgba(255, 214, 163, 0.3);
 }
 
 .iconImage {

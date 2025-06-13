@@ -9,7 +9,8 @@
     "pages/Me/index",
     "pages/InfoDetails/index",
     "pages/CustomerSignature/index",
-    "pages/SelectAppointment/index"
+    "pages/SelectAppointment/index",
+    "pages/Questionnaire/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

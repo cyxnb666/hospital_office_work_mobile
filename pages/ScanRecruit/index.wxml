@@ -9,7 +9,6 @@
                 <view class="viewComponent">
                     <ImproveInfo id="ImproveInfo" bind:onInput="onInput"
                                  customer="{{submitForm.customer}}" wx:if="{{active === 0}}"/>
-                    <!-- 保留调查问卷组件但不显示 -->
                     <view style="display: none;">
                         <Questionnaire id="Questionnaire" bind:onInput="onInput" surveyQuestion="{{submitForm.surveyQuestion}}"/>
                         <SignUp id="SignUp" bind:onInput="onInput" signUp="{{submitForm.signUp}}"/>
@@ -20,6 +19,9 @@
         </view>
     </view>
     <view class="bottomBox">
+        <view class="TemporarySave" bind:tap="goToHome">
+            <!-- 返回首页 -->返回首页 
+        </view>
         <view class="button-group">
             <view wx:if="{{active !== 0}}" class="PreviousStep" bind:tap="onPreviousStep">
                 <view class="PreviousStepContent">
