@@ -17,62 +17,31 @@
 .error{
     color: #ee0a24;
 }
-
-.image-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20rpx;
-  width: 360rpx;
-  justify-content: flex-end;
+.error-text{
+    color: #ee0a24;
+    font-size: 24rpx;
+    margin-top: 8rpx;
 }
 
-.image-item {
-  position: relative;
-  width: 100rpx;
-  height: 100rpx;
-  flex: 0 0 100rpx;
+/* 性别选择区域样式优化 */
+.gender-radio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
-.report-image {
-  width: 100%;
-  height: 100%;
-  border-radius: 8rpx;
+.gender-radio-group {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    width: auto !important;
 }
 
-.delete-btn {
-  position: absolute;
-  top: -10rpx;
-  right: -10rpx;
-  width: 30rpx;
-  height: 30rpx;
-  background: rgba(0,0,0,0.5);
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24rpx;
+.gender-radio-item {
+    margin-left: 32rpx !important;
+    flex: none !important;
 }
 
-.upload-btn {
-  width: 100rpx;
-  height: 100rpx;
-  border: 2rpx dashed #ddd;
-  border-radius: 8rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.upload-text {
-  font-size: 40rpx;
-  color: #999;
-}
-
-.label {
-  color: #646566;
-}
-
-.error-cell {
-  --cell-text-color: #ee0a24;
+.gender-radio-item:first-child {
+    margin-left: 0 !important;
 }

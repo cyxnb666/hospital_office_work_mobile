@@ -1,49 +1,19 @@
 <view class="ImproveInfo">
   <van-cell-group>
     <van-field value="{{ customer.customerName }}" label="姓名" placeholder="请输入姓名" border="{{ true }}" input-align="right" bind:input="onInput" data-key="customerName" readonly="{{customer.editStatus === '1'}}" error="{{!customer.customerName && showError}}" />
-    <van-cell title-class="label" is-link title="出生年月日" border="{{ true }}">
-      <picker mode="date" value="{{customer.birthday}}" bindchange="bindDateChange" disabled="{{customer.editStatus === '1'}}">
-        <view class="{{customer.birthday?'selectData':'picker'}}">
-          <text wx:if="{{customer.birthday}}">{{customer.birthday}}</text>
-          <text wx:else class="{{!customer.birthday && showError?'error':''}}">请选择出生年月日</text>
-        </view>
-      </picker>
-    </van-cell>
+    
     <van-field value="{{ customer.age }}" label="年龄" placeholder="请输入年龄" border="{{ true }}" input-align="right" bind:input="onInput" data-key="age" readonly="{{customer.editStatus === '1'}}" error="{{!customer.age && showError}}" />
-    <van-cell title-class="label" title="性别" is-link bind:tap="onGenderChange" border="{{ true }}">
-      <view class="{{customer.gender?'selectData':'picker'}}">
-        <text wx:if="{{customer.gender}}">{{customer.gender}}</text>
-        <text wx:else class="{{!customer.gender && showError?'error':''}}">请选择性别</text>
+    
+    <van-cell title-class="label" title="性别" border="{{ true }}">
+      <view slot="right-icon" class="gender-radio-container">
+        <van-radio-group value="{{ customer.gender }}" bind:change="onGenderRadioChange" direction="horizontal" custom-class="gender-radio-group">
+          <van-radio name="男" checked-color="#357BEC" disabled="{{customer.editStatus === '1'}}" custom-class="gender-radio-item">男</van-radio>
+          <van-radio name="女" checked-color="#357BEC" disabled="{{customer.editStatus === '1'}}" custom-class="gender-radio-item">女</van-radio>
+        </van-radio-group>
+        <view wx:if="{{!customer.gender && showError}}" class="error-text">请选择性别</view>
       </view>
     </van-cell>
-    <van-field value="{{ customer.medicalRecordNo }}" label="病历号" bind:input="onInput" data-key="medicalRecordNo" readonly="{{customer.editStatus === '1'}}" placeholder="填写医院病历号" border="{{ true }}" error="{{!customer.medicalRecordNo && showError}}" input-align="right" />
-    <van-cell title-class="label" is-link title="所在地区" border="{{ true }}">
-      <picker mode="region" value="{{customer.region}}" bindchange="bindLocationChange">
-        <view class="{{customer.region?'selectData':'picker'}}">
-          <text wx:if="{{customer.region}}">{{customer.region}}</text>
-          <text wx:else class="{{!customer.region && showError?'error':''}}">请选择所在地区</text>
-        </view>
-      </picker>
-    </van-cell>
-    <van-field value="{{ customer.address }}" label="详细地址" placeholder="请输入详细地址" border="{{ true }}" bind:input="onInput" data-key="address" error="{{!customer.address && showError}}" input-align="right" />
+    
     <van-field value="{{ customer.phone }}" label="联系方式" placeholder="请输入联系方式" border="{{ true }}" bind:input="onInput" data-key="phone" error="{{!customer.phone && showError}}" input-align="right" />
-    <van-cell title-class="label" title="体检报告" border="{{ true }}" bind:tap="uploadReport">
-      <view slot="right-icon" class="report-upload">
-        <view class="image-list">
-          <block wx:for="{{customer.reportImages}}" wx:key="index">
-            <view class="image-item">
-              <image src="{{item}}" class="report-image" mode="aspectFill" data-url="{{item}}" bindtap="previewImage" />
-              <view class="delete-btn" catchtap="deleteImage" data-index="{{index}}">×</view>
-            </view>
-          </block>
-          <view class="upload-btn" wx:if="{{customer.reportImages.length < 5}}" catchtap="uploadReport">
-            <text class="upload-text">+</text>
-          </view>
-          <view wx:if="{{!customer.reportImages || customer.reportImages.length === 0}}" class="{{(!customer.reportImages || customer.reportImages.length === 0) && showError ? 'error' : 'picker'}}">
-            请上传至少一张图片
-          </view>
-        </view>
-      </view>
-    </van-cell>
   </van-cell-group>
 </view>

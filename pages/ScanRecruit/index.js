@@ -6,28 +6,17 @@ Page({
         steps: [
             {
                 text: '完善信息',
-            },
-            {
-                text: '调查问卷',
-            },
-            {
-                text: '报名',
             }
         ],
         submitForm: {
             customer: {
                 customerName: '',
-                birthday: '',
                 age: '',
                 gender: '',
-                medicalRecordNo: '',
-                region: '',
-                address: '',
                 phone: '',
                 editStatus: '',
                 openId: wx.getStorageSync('openId'),
                 customerId: wx.getStorageSync('customerId'),
-                reportImages: [],
             },
             signUp: {
                 topicId: '',
@@ -61,24 +50,50 @@ Page({
         }
     },
     onNextStep() {
-        const idList = ['#ImproveInfo', '#Questionnaire', '#SignUp', '#ConsentForm']
-        const id = idList[this.data.active]
-        const childComponent = this.selectComponent(id);
-        if (childComponent && childComponent.checkValue()) {
-            return
-        }
-        if (this.data.active < 3) {
+        if (this.data.active === 0) {
+            const childComponent = this.selectComponent('#ImproveInfo');
+            if (childComponent && childComponent.checkValue()) {
+                return
+            }
+            // 直接跳到知情同意书
             this.setData({
-                active: this.data.active + 1
+                active: 1
             })
             return
         }
-        // 提交表单
-        this.submitFormFn(true);
+        
+        // 知情同意书页面 - 提交表单
+        if (this.data.active === 1) {
+            const childComponent = this.selectComponent('#ConsentForm');
+            if (childComponent && childComponent.checkValue()) {
+                return
+            }
+            this.submitFormFn(true);
+        }
     },
     submitFormFn(type) {
         const URL = type ? addCustomer : addTempCustomer
-        URL(this.data.submitForm).then(() => {
+        let params = this.data.submitForm;
+        
+        if (type) {
+            const topicId = wx.getStorageSync('topicId') || this.data.submitForm.signUp?.topicId || 0;
+            params = {
+                age: parseInt(this.data.submitForm.customer.age) || 0,
+                agreement: {
+                    customerAgreementId: 0,
+                    signFileOssId: this.data.submitForm.agreement.signFileOssId || ""
+                },
+                customerId: parseInt(this.data.submitForm.customer.customerId) || 0,
+                customerName: this.data.submitForm.customer.customerName || "",
+                editStatus: this.data.submitForm.customer.editStatus || "",
+                gender: this.data.submitForm.customer.gender || "",
+                openId: this.data.submitForm.customer.openId || "",
+                phone: this.data.submitForm.customer.phone || "",
+                topicId: parseInt(topicId) || 0
+            };
+        }
+        
+        URL(params).then(() => {
             wx.showToast({
                 title: type ? '提交成功' : '暂存成功',
                 icon: 'success',
@@ -104,18 +119,26 @@ Page({
             this.setData({
                 submitForm: {
                     ...this.data.submitForm,
-                    customer: {
-                        ...res.customer,
-                        reportImages: res.reportImages || []
+                    customer: res.customer || this.data.submitForm.customer,
+                    agreement: res.agreement || this.data.submitForm.agreement,
+                    signUp: {
+                        ...this.data.submitForm.signUp,
+                        ...(res.signUp || {}),
+                        topicId: topicId || res.signUp?.topicId || this.data.submitForm.signUp.topicId
                     },
-                    agreement: res.agreement,
-                    signUp: res.signUp,
-                    surveyQuestion: res.surveyQuestion
+                    surveyQuestion: res.surveyQuestion || this.data.submitForm.surveyQuestion
                 }
             })
         }).catch(() => {
+            // 如果获取失败，确保topicId仍然被设置
+            if (topicId) {
+                this.setData({
+                    'submitForm.signUp.topicId': topicId
+                })
+            }
         })
     },
+    // 保留调查问卷方法（之后可能会用到）
     clientSurveyQuestionFn() {
         clientSurveyQuestion().then(res => {
             this.setData({
@@ -135,12 +158,15 @@ Page({
         }
     },
     onLoad(query) {
-        const topicId = wx.getStorageSync('topicId')
+        const topicId = query?.topicId || wx.getStorageSync('topicId')
         if (topicId) {
             this.setData({
-                showNext: true
+                showNext: true,
+                'submitForm.signUp.topicId': topicId
             })
+            // 确保topicId被保存到localStorage
+            wx.setStorageSync('topicId', topicId)
         }
-        this.getCustomerByOpenIdFn(query?.topicId);
+        this.getCustomerByOpenIdFn(topicId);
     }
 })
