@@ -51,7 +51,7 @@ export const updateHeadAndName = (date) => instance.post('/customer/updateHeadAn
  * @description 查询该客户的预约信息
  * @returns Promise
  */
-export const getAppointInfo = () => instance.post('/appoint/getAppointInfo')
+export const getAppointInfo = (topicId) => instance.get(`/appoint/getAppointInfo/${topicId}`)
 /**
  * @description -获取所有课题详情
  * @returns Promise

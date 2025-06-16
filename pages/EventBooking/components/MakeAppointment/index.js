@@ -34,7 +34,8 @@ Component({
     },
     methods: {
         initialization() {
-            getAppointInfo().then((res) => {
+            const topicId = wx.getStorageSync('topicId') || 0
+            getAppointInfo(topicId).then((res) => {
                 this.setData({
                     makeAppointmentList: res
                 })
