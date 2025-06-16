@@ -16,7 +16,7 @@ Component({
     },
     methods: {
         onGenderRadioChange(e) {
-            if (this.data.customer.editStatus === '1'){
+            if (this.data.customer.reviewStatus !== '1'){
                 return
             }
             this.triggerEvent('onInput', {

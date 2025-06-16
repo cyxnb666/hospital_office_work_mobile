@@ -119,7 +119,16 @@ Page({
             this.setData({
                 submitForm: {
                     ...this.data.submitForm,
-                    customer: res.customer || this.data.submitForm.customer,
+                    customer: {
+                        customerName: res.customerName || this.data.submitForm.customer.customerName,
+                        age: res.age || this.data.submitForm.customer.age,
+                        gender: res.gender || this.data.submitForm.customer.gender,
+                        phone: res.phone || this.data.submitForm.customer.phone,
+                        editStatus: res.editStatus || this.data.submitForm.customer.editStatus,
+                        reviewStatus: res.reviewStatus || this.data.submitForm.customer.reviewStatus,
+                        openId: this.data.submitForm.customer.openId,
+                        customerId: res.customerId || this.data.submitForm.customer.customerId,
+                    },
                     agreement: res.agreement || this.data.submitForm.agreement,
                     signUp: {
                         ...this.data.submitForm.signUp,

@@ -10,7 +10,8 @@ Component({
     },
     methods: {
         initialization() {
-            getMyAppointRecord().then((res) => {
+            const topicId = wx.getStorageSync('topicId') || 0
+            getMyAppointRecord(topicId).then((res) => {
                 res.forEach((item) => {
                     item.makeAnAppointmentState = item.serviceStatus === '0' ? '服务中' : '已结束'
                 })

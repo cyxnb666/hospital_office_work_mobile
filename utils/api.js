@@ -67,7 +67,7 @@ export const getSchedulingList = (date) => instance.post('/appoint/getScheduling
  * @description -我的预约记录
  * @returns Promise
  */
-export const getMyAppointRecord = () => instance.get('/appoint/getMyAppointRecord')
+export const getMyAppointRecord = (topicId) => instance.get(`/appoint/getAppointInfo/${topicId}`)
 /**
  * @description -查询调查问卷
  * @returns Promise
