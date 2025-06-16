@@ -7,12 +7,66 @@
 }
 
 .MakeAppointmentItem {
+    margin-bottom: 10px;
+    border-radius: 16rpx;
+    overflow: hidden;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* 滑动容器 */
+.swipe-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* 滑动内容区 */
+.swipe-content {
     background-color: #ffffff;
     padding: 30rpx;
     box-sizing: border-box;
-    border-radius: 16rpx;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+    transform: translateX(0);
+}
+
+.swipe-content.show-delete {
+    transform: translateX(-120rpx);
+}
+
+/* 普通内容区（非滑动状态） */
+.normal-content {
+    background-color: #ffffff;
+    padding: 30rpx;
+    box-sizing: border-box;
+}
+
+/* 删除按钮区域 */
+.swipe-delete {
+    position: absolute;
+    top: 0;
+    right: -120rpx;
+    width: 120rpx;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.3s ease;
+}
+
+.swipe-delete.show {
+    right: 0;
+}
+
+.delete-btn {
+    width: 100%;
+    height: 100%;
+    background: #ff4757;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28rpx;
+    font-weight: 400;
 }
 
 .title {
@@ -78,6 +132,17 @@
     color: #357BEC;
 }
 
+/* 电话号码样式 */
+.phone-number {
+    color: #357BEC !important;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.phone-number:active {
+    opacity: 0.7;
+}
+
 .dividingLine {
     width: 100%;
     border-bottom: 2rpx solid #EEEFF1;
@@ -87,30 +152,6 @@
 .button-group {
     display: flex;
     justify-content: flex-end;
-}
-
-.quitGroup {
-    width: 172rpx;
-    height: 60rpx;
-    border-radius: 46rpx;
-    border: 2rpx solid rgba(54, 125, 236, 0);
-    background: linear-gradient(270deg, rgba(54, 125, 236, 1), rgba(101, 186, 255, 1));
-    padding: 2rpx;
-    box-sizing: border-box;
-    margin-right: 24rpx;
-}
-
-.quitGroupContent {
-    width: 100%;
-    height: 100%;
-    border-radius: 46rpx;
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 400;
-    font-size: 28rpx;
-    color: #357BEC;
 }
 
 .onMakeAppointment {
@@ -289,4 +330,59 @@
 .reviewStatus{
     display: flex;
     justify-content: space-between;
+}
+
+/* 退出课题原因弹窗样式 */
+.quit-reason-popup {
+    padding: 40rpx;
+    background: #ffffff;
+    border-radius: 16rpx;
+}
+
+.quit-reason-title {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 16rpx;
+}
+
+.quit-reason-subtitle {
+    font-size: 28rpx;
+    color: #666666;
+    text-align: center;
+    margin-bottom: 32rpx;
+}
+
+.quit-reason-input-wrapper {
+    margin-bottom: 40rpx;
+}
+
+.quit-reason-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 24rpx;
+}
+
+.quit-reason-cancel,
+.quit-reason-confirm {
+    flex: 1;
+    height: 80rpx;
+    border-radius: 40rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28rpx;
+    font-weight: 400;
+}
+
+.quit-reason-cancel {
+    border: 2rpx solid #357BEC;
+    color: #357BEC;
+    background: #ffffff;
+}
+
+.quit-reason-confirm {
+    background: linear-gradient(90deg, #ff6b6b 0%, #ee5a52 100%);
+    color: #ffffff;
 }

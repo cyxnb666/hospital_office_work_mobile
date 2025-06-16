@@ -1,51 +1,96 @@
 <view class="MakeAppointment">
     <view class="MakeAppointmentItem" wx:for="{{makeAppointmentList}}" wx:key="index">
-        <view class="title">{{item.topicName}}</view>
-        <view class="itemData">
-            <view class="label">课题编号:</view>
-            <view class="value">{{item.topicId || '-'}}</view>
-        </view>
-        <view class="itemData">
-            <view class="label">课题简介:</view>
-            <view class="value introduction">{{item.introduction}}</view>
-        </view>
-        <view class="itemData">
-            <view class="label">课题时段:</view>
-            <view class="value">{{item.topicTimePeriod || '-'}}</view>
-        </view>
-        <view class="itemData">
-            <view class="label">序号:</view>
-            <view class="value">{{item.groupNameAndNo}}</view>
-            <view class="tag">第 <text class="current">{{item.serviceCount}}</text> 次/共{{item.testTimes}}次
+        <!-- 状态为6时显示滑动容器 -->
+        <view wx:if="{{item.reviewStatus === '6'}}" class="swipe-container">
+            <!-- 主内容区 -->
+            <view class="swipe-content {{item.showDelete ? 'show-delete' : ''}}" 
+                  bindtouchstart="onTouchStart" 
+                  bindtouchmove="onTouchMove" 
+                  bindtouchend="onTouchEnd" 
+                  data-index="{{index}}">
+                <view class="title">{{item.topicName}}</view>
+                <view class="itemData">
+                    <view class="label">课题编号:</view>
+                    <view class="value">{{item.topicId || '-'}}</view>
+                </view>
+                <view class="itemData">
+                    <view class="label">课题简介:</view>
+                    <view class="value introduction">{{item.introduction}}</view>
+                </view>
+                <view class="itemData">
+                    <view class="label">课题时段:</view>
+                    <view class="value">{{item.topicTimePeriod || '-'}}</view>
+                </view>
+                <view class="itemData">
+                    <view class="label">序号:</view>
+                    <view class="value">{{item.groupNameAndNo}}</view>
+                    <view class="tag">第 <text class="current">{{item.serviceCount}}</text> 次/共{{item.testTimes}}次
+                    </view>
+                </view>
+                <view class="itemData">
+                    <view class="label">负责人电话:</view>
+                    <view class="value phone-number" bind:tap="onCallPhone" data-phone="{{item.mobile}}">{{item.mobile || '-'}}</view>
+                </view>
+                <view class="dividingLine"></view>
+                <view class="button-group">
+                    <view class="onMakeAppointment" bind:tap="onMakeAppointment" data-index="{{index}}">
+                        预约
+                    </view>
+                </view>
             </view>
-        </view>
-<view class="itemData rejectedReason" wx:if="{{item.reviewStatus === '2'}}">
-    <view class="label">未通过原因:</view>
-    <view class="value">{{item.rejectedReason || '-'}}</view>
-</view>
-        <view class="dividingLine"></view>
-        <view class="button-group" wx:if="{{item.reviewStatus === '6'}}">
-            <view class="quitGroup" data-id="{{item.topicCustomerId}}" bind:tap="onQuitGroup">
-                <view class="quitGroupContent">
+            
+            <!-- 删除按钮区域（滑动显示） -->
+            <view class="swipe-delete {{item.showDelete ? 'show' : ''}}}">
+                <view class="delete-btn" data-id="{{item.topicCustomerId}}" bind:tap="onQuitGroup">
                     退出课题
                 </view>
             </view>
-            <view class="onMakeAppointment" bind:tap="onMakeAppointment" data-index="{{index}}">
-                预约
-            </view>
         </view>
-        <view wx:else class="reviewStatus">
-            <view wx:if="{{item.reviewStatus === '0'}}">待审核</view>
-            <view wx:if="{{item.reviewStatus === '1' && !item.isInGroup}}">审核通过待招募完成</view>
-            <view wx:if="{{item.reviewStatus === '2'}}">未通过审核</view>
-            <view>
-                <view wx:if="{{item.reviewStatus === '2'}}" class="onMakeAppointment" bind:tap="onScanRecruit"
-                      data-index="{{index}}" data-type="{{true}}">
-                    去修改
+        
+        <!-- 其他状态显示普通内容 -->
+        <view wx:else class="normal-content">
+            <view class="title">{{item.topicName}}</view>
+            <view class="itemData">
+                <view class="label">课题编号:</view>
+                <view class="value">{{item.topicId || '-'}}</view>
+            </view>
+            <view class="itemData">
+                <view class="label">课题简介:</view>
+                <view class="value introduction">{{item.introduction}}</view>
+            </view>
+            <view class="itemData">
+                <view class="label">课题时段:</view>
+                <view class="value">{{item.topicTimePeriod || '-'}}</view>
+            </view>
+            <view class="itemData">
+                <view class="label">序号:</view>
+                <view class="value">{{item.groupNameAndNo}}</view>
+                <view class="tag">第 <text class="current">{{item.serviceCount}}</text> 次/共{{item.testTimes}}次
+                </view>
+            </view>
+            <view class="itemData">
+                <view class="label">负责人电话:</view>
+                <view class="value phone-number" bind:tap="onCallPhone" data-phone="{{item.mobile}}">{{item.mobile || '-'}}</view>
+            </view>
+            <view class="itemData rejectedReason" wx:if="{{item.reviewStatus === '2'}}">
+                <view class="label">未通过原因:</view>
+                <view class="value">{{item.rejectedReason || '-'}}</view>
+            </view>
+            <view class="dividingLine"></view>
+            <view class="reviewStatus">
+                <view wx:if="{{item.reviewStatus === '0'}}">待审核</view>
+                <view wx:if="{{item.reviewStatus === '1' && !item.isInGroup}}">审核通过待招募完成</view>
+                <view wx:if="{{item.reviewStatus === '2'}}">未通过审核</view>
+                <view>
+                    <view wx:if="{{item.reviewStatus === '2'}}" class="onMakeAppointment" bind:tap="onScanRecruit"
+                          data-index="{{index}}" data-type="{{true}}">
+                        去修改
+                    </view>
                 </view>
             </view>
         </view>
     </view>
+    
     <view wx:if="{{makeAppointmentList.length}}" class="noOtherYet">暂无其它</view>
     <view wx:else class="emptyBox">
         <image src="../../../../images/icon_empty.png" class="empty"></image>
@@ -84,4 +129,25 @@
         </view>
     </van-popup>
     <van-dialog id="van-dialog"/>
+    
+    <!-- 退出课题原因弹窗 -->
+    <van-popup show="{{ showQuitReasonPopup }}" position="center" custom-style="width: 80%; border-radius: 16rpx;" bind:close="onCloseQuitReasonPopup">
+        <view class="quit-reason-popup">
+            <view class="quit-reason-title">退出课题</view>
+            <view class="quit-reason-subtitle">请填写退出原因（非必填）</view>
+            <view class="quit-reason-input-wrapper">
+                <van-field value="{{ quitReason }}" 
+                          type="textarea" 
+                          placeholder="请输入退出原因..." 
+                          autosize 
+                          maxlength="200"
+                          show-word-limit
+                          bind:input="onQuitReasonInput" />
+            </view>
+            <view class="quit-reason-buttons">
+                <view class="quit-reason-cancel" bind:tap="onCancelQuitReason">取消</view>
+                <view class="quit-reason-confirm" bind:tap="onConfirmQuitReason">确认退出</view>
+            </view>
+        </view>
+    </van-popup>
 </view>

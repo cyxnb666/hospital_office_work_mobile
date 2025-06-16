@@ -67,7 +67,7 @@ export const getSchedulingList = (date) => instance.post('/appoint/getScheduling
  * @description -我的预约记录
  * @returns Promise
  */
-export const getMyAppointRecord = (topicId) => instance.get(`/appoint/getAppointInfo/${topicId}`)
+export const getMyAppointRecord = (topicId) => instance.get(`/appoint/getMyAppointRecord/${topicId}`)
 /**
  * @description -查询调查问卷
  * @returns Promise
@@ -91,11 +91,18 @@ export const getCustomerByOpenId = (data) => instance.post(`/customer/getCustome
  */
 export const cancelAppoint = (appointId) => instance.post(`/appoint/cancelAppoint/${appointId}`)
 /**
- * @description -终止服务-退出课题
- * @param {String} topicCustomerId
+ * @description 终止服务-退出课题
+ * @param {Object} params - 包含topicCustomerId和rejectedReason的对象
+ * @param {Number} params.topicCustomerId - 课题客户ID
+ * @param {String} params.rejectedReason - 退出原因（可选）
  * @returns Promise
  */
-export const terminateService = (topicCustomerId) => instance.post(`/customer/terminateService/${topicCustomerId}`)
+export const terminateService = (params) => {
+    return instance.post('/customer/terminateService', {
+        topicCustomerId: params.topicCustomerId,
+        rejectedReason: params.rejectedReason || ''
+    });
+}
 /**
  * @description -资讯详情
  * @param {String} infoId
