@@ -24,7 +24,7 @@
     <view class="value">{{item.rejectedReason || '-'}}</view>
 </view>
         <view class="dividingLine"></view>
-        <view class="button-group" wx:if="{{item.reviewStatus === '1' && item.isInGroup}}">
+        <view class="button-group" wx:if="{{item.reviewStatus === '6'}}">
             <view class="quitGroup" data-id="{{item.topicCustomerId}}" bind:tap="onQuitGroup">
                 <view class="quitGroupContent">
                     退出课题
