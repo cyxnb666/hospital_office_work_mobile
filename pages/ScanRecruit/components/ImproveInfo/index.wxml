@@ -14,6 +14,6 @@
       </view>
     </van-cell>
     
-    <van-field value="{{ customer.phone }}" label="联系方式" placeholder="请输入联系方式" border="{{ true }}" bind:input="onInput" data-key="phone" error="{{!customer.phone && showError}}" input-align="right" />
+    <van-field value="{{ customer.phone }}" label="联系方式" placeholder="请输入联系方式" border="{{ true }}" bind:input="onInput" data-key="phone" error="{{!customer.phone && showError}}" input-align="right" readonly="{{customer.reviewStatus !== '1'}}" />
   </van-cell-group>
 </view>

@@ -116,7 +116,9 @@ Page({
             if (!res.surveyQuestion) {
                 this.clientSurveyQuestionFn()
             }
+            const reviewStatus = res.reviewStatus || this.data.submitForm.customer.reviewStatus;
             this.setData({
+                showNext: reviewStatus === '1' || !topicId,
                 submitForm: {
                     ...this.data.submitForm,
                     customer: {
@@ -168,7 +170,6 @@ Page({
         const topicId = query?.topicId || wx.getStorageSync('topicId')
         if (topicId) {
             this.setData({
-                showNext: true,
                 'submitForm.signUp.topicId': topicId
             })
             wx.setStorageSync('topicId', topicId)

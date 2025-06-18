@@ -26,6 +26,10 @@ Component({
         },
         
         onInput(e) {
+            if (this.data.customer.reviewStatus !== '1' && e.currentTarget.dataset.key === 'phone') {
+                return;
+            }
+
             const key = `customer.${e.currentTarget.dataset.key}`
             this.triggerEvent('onInput', {
                 key,
