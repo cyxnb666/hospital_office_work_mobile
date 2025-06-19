@@ -16,7 +16,7 @@ Component({
     },
     methods: {
         onGenderRadioChange(e) {
-            if (this.data.customer.reviewStatus !== '1'){
+            if (this.data.customer.reviewStatus !== '1' && this.data.customer.reviewStatus != null){
                 return
             }
             this.triggerEvent('onInput', {
@@ -26,7 +26,7 @@ Component({
         },
         
         onInput(e) {
-            if (this.data.customer.reviewStatus !== '1' && e.currentTarget.dataset.key === 'phone') {
+            if (this.data.customer.reviewStatus !== '1' && this.data.customer.reviewStatus != null && e.currentTarget.dataset.key === 'phone') {
                 return;
             }
 

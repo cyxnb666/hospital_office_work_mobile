@@ -1,19 +1,19 @@
 <view class="ImproveInfo">
   <van-cell-group>
-    <van-field value="{{ customer.customerName }}" label="姓名" placeholder="请输入姓名" border="{{ true }}" input-align="right" bind:input="onInput" data-key="customerName" readonly="{{customer.reviewStatus !== '1'}}" error="{{!customer.customerName && showError}}" />
+    <van-field value="{{ customer.customerName }}" label="姓名" placeholder="请输入姓名" border="{{ true }}" input-align="right" bind:input="onInput" data-key="customerName" readonly="{{customer.reviewStatus !== '1' && customer.reviewStatus != null}}" error="{{!customer.customerName && showError}}" />
     
-    <van-field value="{{ customer.age }}" label="年龄" placeholder="请输入年龄" border="{{ true }}" input-align="right" bind:input="onInput" data-key="age" readonly="{{customer.reviewStatus !== '1'}}" error="{{!customer.age && showError}}" />
+    <van-field value="{{ customer.age }}" label="年龄" placeholder="请输入年龄" border="{{ true }}" input-align="right" bind:input="onInput" data-key="age" readonly="{{customer.reviewStatus !== '1' && customer.reviewStatus != null}}" error="{{!customer.age && showError}}" />
     
     <van-cell title-class="label" title="性别" border="{{ true }}">
       <view slot="right-icon" class="gender-radio-container">
         <van-radio-group value="{{ customer.gender }}" bind:change="onGenderRadioChange" direction="horizontal" custom-class="gender-radio-group">
-          <van-radio name="男" checked-color="#357BEC" disabled="{{customer.reviewStatus !== '1'}}" custom-class="gender-radio-item">男</van-radio>
-          <van-radio name="女" checked-color="#357BEC" disabled="{{customer.reviewStatus !== '1'}}" custom-class="gender-radio-item">女</van-radio>
+          <van-radio name="男" checked-color="#357BEC" disabled="{{customer.reviewStatus !== '1' && customer.reviewStatus != null}}" custom-class="gender-radio-item">男</van-radio>
+          <van-radio name="女" checked-color="#357BEC" disabled="{{customer.reviewStatus !== '1' && customer.reviewStatus != null}}" custom-class="gender-radio-item">女</van-radio>
         </van-radio-group>
         <view wx:if="{{!customer.gender && showError}}" class="error-text">请选择性别</view>
       </view>
     </van-cell>
     
-    <van-field value="{{ customer.phone }}" label="联系方式" placeholder="请输入联系方式" border="{{ true }}" bind:input="onInput" data-key="phone" error="{{!customer.phone && showError}}" input-align="right" readonly="{{customer.reviewStatus !== '1'}}" />
+    <van-field value="{{ customer.phone }}" label="联系方式" placeholder="请输入联系方式" border="{{ true }}" bind:input="onInput" data-key="phone" error="{{!customer.phone && showError}}" input-align="right" readonly="{{customer.reviewStatus !== '1' && customer.reviewStatus != null}}" />
   </van-cell-group>
 </view>

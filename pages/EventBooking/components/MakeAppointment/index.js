@@ -1,5 +1,5 @@
 import moment from "moment";
-import {appoint, getAppointInfo, getSchedulingList, terminateService} from "../../../../utils/api";
+import { appoint, getAppointInfo, getSchedulingList, terminateService } from "../../../../utils/api";
 import Dialog from '@vant/weapp/dialog/dialog';
 
 moment.locale('zh-cn', {
@@ -53,14 +53,14 @@ Component({
                     makeAppointmentList: res
                 })
             }).catch(() => {
-              this.setData({
-                makeAppointmentList: []
-              })
-            }).finally(()=>{
-               wx.stopPullDownRefresh()
+                this.setData({
+                    makeAppointmentList: []
+                })
+            }).finally(() => {
+                wx.stopPullDownRefresh()
             })
         },
-        
+
         // 滑动相关方法
         onTouchStart(e) {
             this.setData({
@@ -68,30 +68,30 @@ Component({
                 startY: e.touches[0].clientY
             });
         },
-        
+
         onTouchMove(e) {
             this.setData({
                 moveX: e.touches[0].clientX,
                 moveY: e.touches[0].clientY
             });
         },
-        
+
         onTouchEnd(e) {
-            const {startX, startY, moveX, moveY} = this.data;
+            const { startX, startY, moveX, moveY } = this.data;
             const deltaX = moveX - startX;
             const deltaY = moveY - startY;
             const index = e.currentTarget.dataset.index;
             const item = this.data.makeAppointmentList[index];
-            
+
             // 只有状态为6的item才处理滑动
             if (item.reviewStatus !== '6') {
                 return;
             }
-            
+
             // 判断是否为有效的水平滑动（水平距离大于垂直距离且超过阈值）
             if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
                 const makeAppointmentList = [...this.data.makeAppointmentList];
-                
+
                 if (deltaX < -50) {
                     // 向左滑动，显示删除按钮
                     // 先隐藏其他项的删除按钮
@@ -102,12 +102,12 @@ Component({
                     // 向右滑动，隐藏删除按钮
                     makeAppointmentList[index].showDelete = false;
                 }
-                
+
                 this.setData({
                     makeAppointmentList
                 });
             }
-            
+
             // 重置滑动数据
             this.setData({
                 startX: 0,
@@ -116,7 +116,7 @@ Component({
                 moveY: 0
             });
         },
-        
+
         // 隐藏所有删除按钮（只对状态为6的item操作）
         hideAllDeleteButtons() {
             const makeAppointmentList = this.data.makeAppointmentList.map(item => ({
@@ -127,7 +127,7 @@ Component({
                 makeAppointmentList
             });
         },
-        
+
         onQuitGroup(e) {
             const id = e.currentTarget.dataset.id;
             this.setData({
@@ -136,14 +136,14 @@ Component({
                 quitReason: ''
             });
         },
-        
+
         // 退出原因输入
         onQuitReasonInput(e) {
             this.setData({
                 quitReason: e.detail
             });
         },
-        
+
         // 关闭退出原因弹窗
         onCloseQuitReasonPopup() {
             this.setData({
@@ -152,16 +152,16 @@ Component({
                 currentQuitTopicCustomerId: null
             });
         },
-        
+
         // 取消退出
         onCancelQuitReason() {
             this.onCloseQuitReasonPopup();
         },
-        
+
         // 确认退出课题
         onConfirmQuitReason() {
-            const {currentQuitTopicCustomerId, quitReason} = this.data;
-            
+            const { currentQuitTopicCustomerId, quitReason } = this.data;
+
             Dialog.confirm({
                 title: '提示',
                 message: '确认要退出该课题吗？',
@@ -171,7 +171,7 @@ Component({
                     topicCustomerId: currentQuitTopicCustomerId,
                     rejectedReason: quitReason || ''
                 };
-                
+
                 terminateService(params).then(() => {
                     wx.showToast({
                         title: '退出课题成功',
@@ -186,7 +186,7 @@ Component({
                 // 用户取消确认
             });
         },
-        
+
         // 拨打电话
         onCallPhone(e) {
             const phone = e.currentTarget.dataset.phone;
@@ -198,7 +198,7 @@ Component({
                 });
                 return;
             }
-            
+
             wx.makePhoneCall({
                 phoneNumber: phone,
                 success: () => {
@@ -209,53 +209,7 @@ Component({
                 }
             });
         },
-        
-        onMakeAppointment(e) {
-            // 先隐藏删除按钮
-            this.hideAllDeleteButtons();
-            
-            const index= e.currentTarget.dataset.index
-            const item = this.data.makeAppointmentList[index]
-            const params = {
-                serviceTimeStart: item.serviceTimeStart,
-                serviceTimeEnd: item.serviceTimeEnd
-            }
-            getSchedulingList(params).then((res) => {
-                const dateArr = res.map(item => item.schedulingDay);
-                const startDate = moment();
-                const endDate = startDate.clone().add(2, 'month').endOf('month');
-                const dates = [];
-                let currentDate = startDate.clone();
-                while (currentDate.isSameOrBefore(endDate)) {
-                    dates.push(currentDate.format('YYYY-MM-DD'));
-                    currentDate.add(1, 'day');
-                }
-                const dateList = dates.map(item => {
-                    return {
-                        date: item,
-                        dateMD: moment(item).format('M/D'),
-                        week: this.setWeek(item),
-                        timePeriods: res.find(data => data.schedulingDay === item)?.timePeriods,
-                        scheduling: dateArr.includes(item)
-                    }
-                })
-                const timeSlotList = this.data.timeSlotList.map(item => {
-                    return {
-                        ...item,
-                        scheduling: res[0].timePeriods.includes(item.key)
-                    }
-                })
-                this.setData({
-                    selectIndex: e.currentTarget.dataset.index,
-                    show: true,
-                    dateList: dateList,
-                    timeSlotList: timeSlotList,
-                    reservationTime: {appointDay: res[0].schedulingDay, timePeriod: res[0].timePeriods[0]}
-                })
-            }).catch(() => {
-            })
-        },
-        
+
         onScanRecruit(e) {
             const index = e.currentTarget.dataset.index
             const type = e.currentTarget.dataset.type
@@ -271,55 +225,90 @@ Component({
                 })
             }
         },
-        
+
         setWeek(date) {
             const isToday = moment(date).isSame(moment(), 'day');
             if (isToday) return '今日'
             return moment(date).format('dddd')
         },
-        
-        setDate(e) {
-            const item = this.data.dateList.find(item => item.date === e.currentTarget.dataset.date)
-            if (!item.scheduling) {
-                wx.showToast({
-                    title: '该日期暂无排班信息',
-                    icon: 'none'
-                })
-                return
-            }
-            const timeSlotList = this.data.timeSlotList.map((data) => {
-                return {
-                    ...data,
-                    scheduling: item.timePeriods.includes(data.key)
-                }
-            })
-            this.setData({
-                reservationTime: {
-                    appointDay: e.currentTarget.dataset.date,
-                    timePeriod: item.timePeriods[0]
-                },
-                timeSlotList: timeSlotList
-            })
-        },
-        
-        setTimeSlot(e) {
-            if (!e.currentTarget.dataset.scheduling) {
-                wx.showToast({
-                    title: '该时间段暂无排班信息',
-                    icon: 'none'
-                })
-                return
-            }
-            this.setData({'reservationTime.timePeriod': e.currentTarget.dataset.key})
-        },
-        
+
+
         onCancel() {
             this.setData({
                 show: false,
-                reservationTime: {appointDay: null, timePeriod: null}
+                reservationTime: { appointDay: null, timePeriod: null }
             })
         },
-        
+
+        onMakeAppointment(e) {
+            // 先隐藏删除按钮
+            this.hideAllDeleteButtons();
+
+            const index = e.currentTarget.dataset.index;
+
+            // 直接生成日期列表，不调用接口
+            const startDate = moment().add(1, 'day'); // 从明天开始
+            const endDate = startDate.clone().add(2, 'month').endOf('month');
+            const dates = [];
+            let currentDate = startDate.clone();
+
+            while (currentDate.isSameOrBefore(endDate)) {
+                dates.push(currentDate.format('YYYY-MM-DD'));
+                currentDate.add(1, 'day');
+            }
+
+            // 生成日期列表，所有日期都可选
+            const dateList = dates.map(item => {
+                return {
+                    date: item,
+                    dateMD: moment(item).format('M/D'),
+                    week: this.setWeek(item),
+                    timePeriods: ['AM', 'PM'], // 所有日期都有上午下午时段
+                    scheduling: true // 所有日期都可预约
+                }
+            });
+
+            // 所有时间段都可选
+            const timeSlotList = this.data.timeSlotList.map(item => {
+                return {
+                    ...item,
+                    scheduling: true // 所有时间段都可选
+                }
+            });
+
+            this.setData({
+                selectIndex: index,
+                show: true,
+                dateList: dateList,
+                timeSlotList: timeSlotList,
+                reservationTime: {
+                    appointDay: dates[0], // 默认选择第一个可用日期（明天）
+                    timePeriod: 'AM'      // 默认选择上午时段
+                }
+            });
+        },
+
+        // 修改 setDate 方法，移除排班检查
+        setDate(e) {
+            const selectedDate = e.currentTarget.dataset.date;
+
+            this.setData({
+                reservationTime: {
+                    appointDay: selectedDate,
+                    timePeriod: 'AM' // 重新选择日期时，默认选择上午
+                }
+            });
+        },
+
+        // 修改 setTimeSlot 方法，移除排班检查
+        setTimeSlot(e) {
+            const selectedTimePeriod = e.currentTarget.dataset.key;
+
+            this.setData({
+                'reservationTime.timePeriod': selectedTimePeriod
+            });
+        },
+
         onaAppointment() {
             const index = this.data.selectIndex
             const params = {
@@ -335,11 +324,12 @@ Component({
                 })
                 this.setData({
                     show: false,
-                    reservationTime: {appointDay: null, timePeriod: null}
+                    reservationTime: { appointDay: null, timePeriod: null }
                 })
                 this.initialization();
             }).catch(() => {
             })
         }
+
     }
 });

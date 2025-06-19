@@ -118,7 +118,7 @@ Page({
             }
             const reviewStatus = res.reviewStatus || this.data.submitForm.customer.reviewStatus;
             this.setData({
-                showNext: reviewStatus === '1' || !topicId,
+                showNext: reviewStatus === '1' || reviewStatus == null || !topicId,
                 submitForm: {
                     ...this.data.submitForm,
                     customer: {
