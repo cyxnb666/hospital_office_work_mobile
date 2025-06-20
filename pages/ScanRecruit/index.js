@@ -1,4 +1,4 @@
-import {addCustomer, addTempCustomer, clientSurveyQuestion, getAccessInfo, getCustomerByOpenId} from "../../utils/api";
+import { addCustomer, addTempCustomer, clientSurveyQuestion, getAccessInfo, getCustomerByOpenId } from "../../utils/api";
 
 Page({
     data: {
@@ -15,6 +15,7 @@ Page({
                 gender: '',
                 phone: '',
                 editStatus: '',
+                submitStatus: '',
                 openId: wx.getStorageSync('openId'),
                 customerId: wx.getStorageSync('customerId'),
             },
@@ -55,13 +56,12 @@ Page({
             if (childComponent && childComponent.checkValue()) {
                 return
             }
-            // 直接跳到知情同意书
             this.setData({
                 active: 1
             })
             return
         }
-        
+
         // 知情同意书页面 - 提交表单
         if (this.data.active === 1) {
             const childComponent = this.selectComponent('#ConsentForm');
@@ -74,7 +74,7 @@ Page({
     submitFormFn(type) {
         const URL = type ? addCustomer : addTempCustomer
         let params = this.data.submitForm;
-        
+
         if (type) {
             const topicId = wx.getStorageSync('topicId') || this.data.submitForm.signUp?.topicId || 0;
             params = {
@@ -92,7 +92,7 @@ Page({
                 topicId: parseInt(topicId) || 0
             };
         }
-        
+
         URL(params).then(() => {
             wx.showToast({
                 title: type ? '提交成功' : '暂存成功',
@@ -107,7 +107,7 @@ Page({
     },
     getCustomerByOpenIdFn(topicId) {
         const openId = wx.getStorageSync('openId')
-        const data = {openId: openId, topicId: topicId}
+        const data = { openId: openId, topicId: topicId }
         getCustomerByOpenId(data).then(async (res) => {
             const config = await getAccessInfo()
             if (res.agreement) {
@@ -127,6 +127,7 @@ Page({
                         gender: res.gender || this.data.submitForm.customer.gender,
                         phone: res.phone || this.data.submitForm.customer.phone,
                         editStatus: res.editStatus || this.data.submitForm.customer.editStatus,
+                        submitStatus: res.submitStatus || this.data.submitForm.customer.submitStatus,
                         reviewStatus: res.reviewStatus || this.data.submitForm.customer.reviewStatus,
                         openId: this.data.submitForm.customer.openId,
                         customerId: res.customerId || this.data.submitForm.customer.customerId,

@@ -1,36 +1,46 @@
 <view class="ScanRecruitView">
-    <view class="content">
-        <view class="header">
-            <view class="logo"></view>
-        </view>
-        <view class="content-box">
-            <view class="viewComponent-Box" wx:if="{{active !== 1}}">
-                <van-steps steps="{{ steps }}" active="{{ active }}" active-color="#357BEC"/>
-                <view class="viewComponent">
-                    <ImproveInfo id="ImproveInfo" bind:onInput="onInput"
-                                 customer="{{submitForm.customer}}" wx:if="{{active === 0}}"/>
-                    <view style="display: none;">
-                        <Questionnaire id="Questionnaire" bind:onInput="onInput" surveyQuestion="{{submitForm.surveyQuestion}}"/>
-                        <SignUp id="SignUp" bind:onInput="onInput" signUp="{{submitForm.signUp}}"/>
-                    </view>
-                </view>
-            </view>
-            <ConsentForm wx:else id="ConsentForm" bind:onSign="onSign" signImage="{{submitForm.agreement.signImage}}"/>
-        </view>
-    </view>
-    <view class="bottomBox">
-        <view class="TemporarySave" bind:tap="goToHome">
-            <!-- 返回首页 -->返回首页 
-        </view>
-        <view class="button-group">
-            <view wx:if="{{active !== 0}}" class="PreviousStep" bind:tap="onPreviousStep">
-                <view class="PreviousStepContent">
-                    {{active === 1 ? '取消' : '上一步'}}
-                </view>
-            </view>
-            <view class="NextStep" bind:tap="onNextStep" wx:if="{{showNext}}">
-                {{active === 0 ? '提交' : active === 1 ? '提交' : '下一步'}}
-            </view>
-        </view>
-    </view>
+	<view class="content">
+		<view class="header">
+			<view class="logo" />
+		</view>
+		<view class="content-box">
+			<view class="viewComponent-Box" wx:if="{{active !== 1}}">
+				<van-steps steps="{{ steps }}" active="{{ active }}" active-color="#357BEC" />
+				<view class="viewComponent">
+					<ImproveInfo
+					 id="ImproveInfo"
+					 bind:onInput="onInput"
+					 customer="{{submitForm.customer}}"
+					 wx:if="{{active === 0}}"
+					/>
+					<view style="display: none;">
+						<Questionnaire id="Questionnaire" bind:onInput="onInput" surveyQuestion="{{submitForm.surveyQuestion}}" />
+						<SignUp id="SignUp" bind:onInput="onInput" signUp="{{submitForm.signUp}}" />
+					</view>
+				</view>
+			</view>
+			<ConsentForm
+			 wx:else
+			 id="ConsentForm"
+			 bind:onSign="onSign"
+			 signImage="{{submitForm.agreement.signImage}}"
+			/>
+		</view>
+	</view>
+	<view class="bottomBox">
+		<view class="TemporarySave" bind:tap="goToHome">
+			<!-- 返回首页 -->返回首页
+		</view>
+		<view class="button-group">
+			<view wx:if="{{active !== 0}}" class="PreviousStep" bind:tap="onPreviousStep">
+				<view class="PreviousStepContent">
+					{{active === 1 ? '取消' : '上一步'}}
+				</view>
+			</view>
+			<view class="NextStep" bind:tap="onNextStep" wx:if="{{active === 0 || submitForm.customer.submitStatus === '0'}}">
+				{{active === 0 ? '下一步' : '提交'}}
+			</view>
+		</view>
+	</view>
 </view>
+
