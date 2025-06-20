@@ -142,7 +142,7 @@
                           type="textarea" 
                           placeholder="请输入退出原因..." 
                           autosize 
-                          maxlength="200"
+                          maxlength="100"
                           show-word-limit
                           bind:input="onQuitReasonInput" />
             </view>
