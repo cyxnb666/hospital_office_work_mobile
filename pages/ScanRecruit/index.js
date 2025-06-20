@@ -116,9 +116,9 @@ Page({
             if (!res.surveyQuestion) {
                 this.clientSurveyQuestionFn()
             }
-            const reviewStatus = res.reviewStatus || this.data.submitForm.customer.reviewStatus;
+            const editStatus = res.editStatus;
             this.setData({
-                showNext: reviewStatus === '1' || reviewStatus == null || !topicId,
+                showNext: editStatus == '0' || editStatus == null || !topicId,
                 submitForm: {
                     ...this.data.submitForm,
                     customer: {
