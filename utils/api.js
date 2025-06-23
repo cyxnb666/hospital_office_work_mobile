@@ -51,7 +51,7 @@ export const updateHeadAndName = (date) => instance.post('/customer/updateHeadAn
  * @description 查询该客户的预约信息
  * @returns Promise
  */
-export const getAppointInfo = (topicId) => instance.get(`/appoint/getAppointInfo/${topicId}`)
+export const getAppointInfo = (topicId) => instance.get('/appoint/getAppointInfo', { topicId })
 /**
  * @description -获取所有课题详情
  * @returns Promise
@@ -67,7 +67,7 @@ export const getSchedulingList = (date) => instance.post('/appoint/getScheduling
  * @description -我的预约记录
  * @returns Promise
  */
-export const getMyAppointRecord = (topicId) => instance.get(`/appoint/getMyAppointRecord/${topicId}`)
+export const getMyAppointRecord = (topicId) => instance.get('/appoint/getMyAppointRecord', { topicId })
 /**
  * @description -查询调查问卷
  * @returns Promise

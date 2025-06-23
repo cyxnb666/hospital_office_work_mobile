@@ -83,6 +83,7 @@
                 <view wx:if="{{item.reviewStatus === '2'}}">报名审核不通过</view>
                 <view wx:if="{{item.reviewStatus === '3'}}">待填写调查问卷</view>
                 <view wx:if="{{item.reviewStatus === '4'}}">问卷待审核</view>
+                <view wx:if="{{item.reviewStatus === '5'}}">调查问卷审核不通过</view>
                 <view>
                     <view wx:if="{{item.reviewStatus === '2'}}" class="onMakeAppointment" bind:tap="onScanRecruit"
                           data-index="{{index}}" data-type="{{true}}">
