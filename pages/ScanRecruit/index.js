@@ -78,18 +78,18 @@ Page({
         if (type) {
             const topicId = wx.getStorageSync('topicId') || this.data.submitForm.signUp?.topicId || 0;
             params = {
-                age: parseInt(this.data.submitForm.customer.age) || 0,
+                age: parseInt(this.data.submitForm.customer.age),
                 agreement: {
                     customerAgreementId: 0,
                     signFileOssId: this.data.submitForm.agreement.signFileOssId || ""
                 },
-                customerId: parseInt(this.data.submitForm.customer.customerId) || 0,
+                customerId: parseInt(this.data.submitForm.customer.customerId),
                 customerName: this.data.submitForm.customer.customerName || "",
                 editStatus: this.data.submitForm.customer.editStatus || "",
                 gender: this.data.submitForm.customer.gender || "",
                 openId: this.data.submitForm.customer.openId || "",
                 phone: this.data.submitForm.customer.phone || "",
-                topicId: parseInt(topicId) || 0
+                topicId: parseInt(topicId)
             };
         }
 

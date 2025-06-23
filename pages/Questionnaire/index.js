@@ -18,7 +18,7 @@ Page({
     
     getCustomerByOpenIdFn(topicId) {
         const openId = wx.getStorageSync('openId');
-        const data = {openId: openId, topicId: topicId || 0};
+        const data = {openId: openId, topicId: topicId};
         
         getCustomerByOpenId(data).then((res) => {
             if (res.surveyQuestion && res.surveyQuestion.length > 0) {
@@ -47,7 +47,7 @@ Page({
         if (childComponent && childComponent.checkValue()) {
             return;
         }
-        const topicId = wx.getStorageSync('topicId') || 0;
+        const topicId = wx.getStorageSync('topicId');
         const submitData = {
             openId: wx.getStorageSync('openId'),
             customerId: wx.getStorageSync('customerId'),

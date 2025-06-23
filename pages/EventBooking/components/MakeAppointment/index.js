@@ -43,7 +43,7 @@ Component({
     },
     methods: {
         initialization() {
-            const topicId = wx.getStorageSync('topicId') || 0;
+            const topicId = wx.getStorageSync('topicId');
             getAppointInfo(topicId).then((res) => {
                 // 为每个item添加showDelete状态（只有状态为6的才需要）
                 res.forEach(item => {
