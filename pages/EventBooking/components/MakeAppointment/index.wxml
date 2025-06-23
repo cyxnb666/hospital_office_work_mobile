@@ -85,10 +85,10 @@
                 <view wx:if="{{item.reviewStatus === '4'}}">问卷待审核</view>
                 <view wx:if="{{item.reviewStatus === '5'}}">调查问卷审核不通过</view>
                 <view>
-                    <view wx:if="{{item.reviewStatus === '2'}}" class="onMakeAppointment" bind:tap="onScanRecruit"
-                          data-index="{{index}}" data-type="{{true}}">
+                    <!-- <view wx:if="{{item.reviewStatus === '2'}}" class="onMakeAppointment" bind:tap="onScanRecruit"
+                        data-index="{{index}}" data-type="{{true}}">
                         去修改
-                    </view>
+                    </view> -->
                 </view>
             </view>
         </view>
