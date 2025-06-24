@@ -72,10 +72,10 @@
                 <view class="label">负责人电话:</view>
                 <view class="value phone-number" bind:tap="onCallPhone" data-phone="{{item.mobile}}">{{item.mobile || '-'}}</view>
             </view>
-            <view class="itemData rejectedReason" wx:if="{{item.reviewStatus === '2'}}">
+            <!--<view class="itemData rejectedReason" wx:if="{{item.reviewStatus === '2'}}">
                 <view class="label">未通过原因:</view>
                 <view class="value">{{item.rejectedReason || '-'}}</view>
-            </view>
+            </view></view> -->
             <view class="dividingLine"></view>
             <view class="reviewStatus">
                 <view wx:if="{{item.reviewStatus === '0'}}">待审核</view>
