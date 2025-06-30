@@ -48,7 +48,9 @@
         </view>
         
         <!-- 其他状态显示普通内容 -->
-        <view wx:else class="normal-content">
+        <view wx:else class="normal-content {{item.reviewStatus === '3' ? 'clickable-card' : ''}}" 
+            bind:tap="{{item.reviewStatus === '3' ? 'onGoToQuestionnaire' : ''}}" 
+            data-topic-id="{{item.topicId}}">
             <view class="title">{{item.topicName}}</view>
             <view class="itemData">
                 <view class="label">课题编号:</view>

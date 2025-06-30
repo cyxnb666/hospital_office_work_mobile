@@ -386,3 +386,24 @@
     background: linear-gradient(90deg, #ff6b6b 0%, #ee5a52 100%);
     color: #ffffff;
 }
+
+/* 可点击卡片样式 */
+.clickable-card {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.clickable-card:active {
+    background-color: #f5f7fa !important;
+}
+
+/* 待填写调查问卷状态的特殊样式 */
+.clickable-card .reviewStatus {
+    position: relative;
+}
+
+.clickable-card .reviewStatus::after {
+    content: " (点击卡片填写)";
+    color: #357BEC;
+    font-size: 24rpx;
+}

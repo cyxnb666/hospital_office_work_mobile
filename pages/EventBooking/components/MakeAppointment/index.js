@@ -329,7 +329,17 @@ Component({
                 this.initialization();
             }).catch(() => {
             })
-        }
+        },
+
+        // 跳转到调查问卷页面
+        onGoToQuestionnaire(e) {
+            const topicId = e.currentTarget.dataset.topicId;
+            if (topicId) {
+                wx.navigateTo({
+                url: `/pages/Questionnaire/index?topicId=${topicId}`
+        });
+    }
+},
 
     }
 });
